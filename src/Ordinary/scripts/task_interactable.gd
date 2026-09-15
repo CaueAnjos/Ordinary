@@ -3,14 +3,28 @@ class_name TaskInteractable
 
 @export var task := ""
 @export var animation_player: AnimationPlayer
+@export var animation: String
 @export var exhaustion_cost := 50
-@export var lock_timer := 3.0
+@export var minigame: PackedScene
 
 func _on_interactable_interacted(player: Player) -> void:
 	player.enable_input(false)
+	
 	animation_player.play("ExecuteTask")
 	await animation_player.animation_finished
-	#await get_tree().create_timer(lock_timer).timeout
+	
+	var should_apply_exhaustion := true
+	
+	if minigame:
+		var game = GameManager.start_minigame(minigame)
+		game.failed.connect(func(): 
+			should_apply_exhaustion = false
+			)
+		
 	player.enable_input(true)
+	
 	GameState.exhaustion_level += exhaustion_cost
-	GameState.complete_task(task)
+	print("")
+	
+	if not task.is_empty():
+		GameState.complete_task(task)

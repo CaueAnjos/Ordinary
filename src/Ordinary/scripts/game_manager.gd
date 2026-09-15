@@ -21,4 +21,14 @@ func restart_game() -> void:
 	get_tree().reload_current_scene()
 	get_tree().paused = false
 	GameState.restart_game_state()
-	
+
+
+func start_minigame(game_scene: PackedScene) -> MinigameBase:
+	get_tree().paused = true
+	var game = game_scene.instantiate()
+	if game is MinigameBase:
+		get_tree().current_scene.get_node("UI").add_child(game)
+		game.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	else:
+		print("minigame should be a MinigameBase")
+	return game
