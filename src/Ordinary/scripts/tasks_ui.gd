@@ -9,7 +9,6 @@ func _ready() -> void:
 	GameState.completed_task.connect(_on_completed_task)
 	
 	var labels = GameState.tasks.keys()
-	print(labels)
 	for label in labels:
 		var task = TASK_ITEM_SCENE.instantiate()
 		task.text = label
