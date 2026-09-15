@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bduaqqfnki8ps"]
+
+[ext_resource type="Script" uid="uid://bwphehq5askch" path="res://scripts/game_state.gd" id="1_si82d"]
+
+[node name="GameState" type="Node" unique_id=1226513125]
+script = ExtResource("1_si82d")
+metadata/_custom_type_script = "uid://bwphehq5askch"
+
+[connection signal="exhaustion_reaches_max" from="." to="." method="_on_exhaustion_reaches_max"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bovs5i1j6fkiw"]
+
+[ext_resource type="PackedScene" uid="uid://d1h8ctuv6ox3a" path="res://scenes/Player.tscn" id="1_j8icx"]
+[ext_resource type="PackedScene" uid="uid://dyepwuw7xcahs" path="res://scenes/testinteractable.tscn" id="2_fcinl"]
+
+[node name="Node2D" type="Node2D" unique_id=317377056]
+
+[node name="Player" parent="." unique_id=26199935 instance=ExtResource("1_j8icx")]
+z_index = 5
+position = Vector2(129, 57)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=320755467]
+position = Vector2(-2, 1)
+position_smoothing_enabled = true
+
+[node name="Interactable1" parent="." unique_id=1891914535 instance=ExtResource("2_fcinl")]
+position = Vector2(590, 155)

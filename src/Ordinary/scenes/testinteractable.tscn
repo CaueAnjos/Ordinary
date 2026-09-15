@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dyepwuw7xcahs"]
+
+[ext_resource type="Script" uid="uid://c416bt6tfeq0w" path="res://scripts/testinteractable.gd" id="1_myo8c"]
+[ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="1_ph6gn"]
+[ext_resource type="Texture2D" uid="uid://d12qp7pbvcmu2" path="res://icon.svg" id="2_atils"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4gkr"]
+radius = 71.11259
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gkr"]
+size = Vector2(242, 229)
+
+[node name="Node2D" type="Node2D" unique_id=1891914535]
+script = ExtResource("1_myo8c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=773538662]
+position = Vector2(-1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=988585211]
+position = Vector2(1, 0)
+texture = ExtResource("2_atils")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2038358200]
+shape = SubResource("CircleShape2D_h4gkr")
+
+[node name="Interactable" type="Node" parent="." unique_id=891703686 node_paths=PackedStringArray("interactable_area")]
+script = ExtResource("1_ph6gn")
+interactable_area = NodePath("../InteractionZone")
+metadata/_custom_type_script = "uid://d18tdseuxi7lt"
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=800398414]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=2083447576]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_h4gkr")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
