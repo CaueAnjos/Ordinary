@@ -4,7 +4,7 @@ class_name Interactable
 @export var interactable_area: Area2D
 
 var player_is_inside: bool
-var player: Node2D
+var player: Player
 
 signal interacted(player: Player)
 
