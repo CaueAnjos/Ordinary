@@ -4,6 +4,10 @@
 
 [node name="GameState" type="Node" unique_id=1226513125]
 script = ExtResource("1_si82d")
+tasks = Dictionary[String, bool]({
+"Test": false
+})
 metadata/_custom_type_script = "uid://bwphehq5askch"
 
 [connection signal="exhaustion_reaches_max" from="." to="." method="_on_exhaustion_reaches_max"]
+[connection signal="win_game" from="." to="." method="_on_win_game"]

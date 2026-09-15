@@ -11,7 +11,26 @@ var exhaustion_level: int:
 var player_position := Vector2.ZERO
 
 signal exhaustion_reaches_max
+signal completed_task(String)
+signal completed_all_tasks
+
+@export var tasks: Dictionary[String, bool]
+var completed_tasks_num := 0
 
 
-func _on_exhaustion_reaches_max() -> void:
-	print("Game over! You are Exhausted")
+func complete_task(task: String) -> void:
+	tasks[task] = true
+	completed_tasks_num += 1
+	completed_task.emit(task)
+	if completed_tasks_num >= tasks.size():
+		completed_all_tasks.emit()
+
+
+func restart_game_state() -> void:
+	player_position = Vector2.ZERO
+	completed_tasks_num = 0
+	exhaustion_level = 0
+	
+	for task in tasks:
+		tasks[task] = false
+		

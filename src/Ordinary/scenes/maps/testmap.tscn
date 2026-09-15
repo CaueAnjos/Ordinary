@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bovs5i1j6fkiw"]
 
 [ext_resource type="PackedScene" uid="uid://d1h8ctuv6ox3a" path="res://scenes/Player.tscn" id="1_j8icx"]
-[ext_resource type="PackedScene" uid="uid://dyepwuw7xcahs" path="res://scenes/testinteractable.tscn" id="2_fcinl"]
+[ext_resource type="PackedScene" uid="uid://dyepwuw7xcahs" path="res://scenes/TaskInteractable.tscn" id="2_fcinl"]
+[ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="3_mgnd1"]
 
 [node name="Node2D" type="Node2D" unique_id=317377056]
 
@@ -15,3 +16,11 @@ position_smoothing_enabled = true
 
 [node name="Interactable1" parent="." unique_id=1891914535 instance=ExtResource("2_fcinl")]
 position = Vector2(590, 155)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=876166243]
+
+[node name="TasksList" parent="CanvasLayer" unique_id=1070871434 instance=ExtResource("3_mgnd1")]
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 15.0
+offset_bottom = 17.0
