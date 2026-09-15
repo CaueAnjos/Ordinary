@@ -13,6 +13,7 @@ var player_position := Vector2.ZERO
 signal exhaustion_reaches_max
 signal completed_task(String)
 signal completed_all_tasks
+signal win_game # this is dead code
 
 @export var tasks: Dictionary[String, bool]
 var completed_tasks_num := 0
