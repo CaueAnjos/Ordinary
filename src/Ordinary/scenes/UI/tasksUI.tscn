@@ -15,7 +15,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 39.0
 offset_bottom = 19.0
-text = "Tasks"
+text = "Tarefas:"
 label_settings = ExtResource("2_mbxcx")
 
 [node name="TasksContainer" type="VBoxContainer" parent="." unique_id=1511232433]

@@ -5,6 +5,7 @@ class_name MyGameState
 var exhaustion_level: int:
 	set(value): 
 		exhaustion_level = clamp(value, 0, exhaustion_max)
+		exhaustion_changes.emit(exhaustion_level)
 		if exhaustion_level >= exhaustion_max:
 			exhaustion_reaches_max.emit()
 	
@@ -21,6 +22,7 @@ signal nier_interaction
 signal far_interaction
 
 signal exhaustion_reaches_max
+signal exhaustion_changes(value: int)
 signal completed_task(String)
 signal completed_all_tasks
 signal win_game # this is dead code

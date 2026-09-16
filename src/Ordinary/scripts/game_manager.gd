@@ -37,6 +37,7 @@ func start_minigame(game_scene: PackedScene) -> MinigameBase:
 		# intro animation finishes - don't call it again here.
 		game.end.connect(func(): 
 			get_tree().current_scene.get_node("UI").remove_child(game)
+			game.queue_free()
 			get_tree().current_scene.get_node("UI").get_node("HUD").show()
 			get_tree().paused = false
 			)
