@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ianp3cg0np3w"]
 
 [ext_resource type="Script" uid="uid://ckinnv8jepm0j" path="res://scripts/tasks_ui.gd" id="1_7p0h3"]
+[ext_resource type="LabelSettings" uid="uid://cu74int3p117i" path="res://assets/text/titles.tres" id="2_mbxcx"]
 
 [node name="TasksList" type="Control" unique_id=1070871434 node_paths=PackedStringArray("tasks_container")]
 layout_mode = 3
@@ -12,13 +13,14 @@ tasks_container = NodePath("TasksContainer")
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 136.0
-offset_bottom = 24.0
+offset_right = 39.0
+offset_bottom = 19.0
 text = "Tasks"
+label_settings = ExtResource("2_mbxcx")
 
 [node name="TasksContainer" type="VBoxContainer" parent="." unique_id=1511232433]
 layout_mode = 0
-offset_left = 4.0
+offset_left = 5.0
 offset_top = 26.0
-offset_right = 304.0
-offset_bottom = 475.0
+offset_right = 81.0
+offset_bottom = 123.0

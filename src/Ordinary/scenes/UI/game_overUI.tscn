@@ -1,9 +1,69 @@
 [gd_scene format=3 uid="uid://c1p34jq5j30ba"]
 
 [ext_resource type="Script" uid="uid://dgjysiddf45n5" path="res://scripts/game_over_ui.gd" id="1_fdnlv"]
+[ext_resource type="LabelSettings" uid="uid://cu74int3p117i" path="res://assets/text/titles.tres" id="2_r0mit"]
+[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_rb3af"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_h4gkr"]
-font_size = 32
+[sub_resource type="Animation" id="Animation_r0mit"]
+resource_name = "GameOver_fadein"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisibleElements:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kpfqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisibleElements:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpfqm"]
+_data = {
+&"GameOver_fadein": SubResource("Animation_r0mit"),
+&"RESET": SubResource("Animation_kpfqm")
+}
 
 [node name="GameOver" type="Control" unique_id=2055946321]
 layout_mode = 3
@@ -14,33 +74,102 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdnlv")
 
-[node name="Label" type="Label" parent="." unique_id=1184402022]
+[node name="VisibleElements" type="Control" parent="." unique_id=1374135801]
+visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.504
-anchor_top = 0.47300002
-anchor_right = 0.504
-anchor_bottom = 0.47300002
-offset_left = -136.60803
-offset_top = -40.503998
-offset_right = 123.39197
-offset_bottom = 34.496002
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Over" type="Label" parent="VisibleElements" unique_id=1184402022]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 12.0
+offset_right = 87.0
+offset_bottom = 57.0
+grow_horizontal = 2
 text = "Game Over"
-label_settings = SubResource("LabelSettings_h4gkr")
+label_settings = ExtResource("2_r0mit")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RetryButton" type="Button" parent="." unique_id=457908873]
+[node name="RetryButton" type="Button" parent="VisibleElements" unique_id=457908873]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49100003
-anchor_top = 0.5
-anchor_right = 0.49100003
-anchor_bottom = 0.5
-offset_left = -77.63202
-offset_top = 57.0
-offset_right = 104.36798
-offset_bottom = 114.0
-text = "Try again"
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.5
+offset_top = -40.0
+offset_right = 62.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[node name="Label" type="Label" parent="VisibleElements/RetryButton" unique_id=210316157]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 19.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tente Novamente"
+label_settings = ExtResource("2_rb3af")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tip" type="Label" parent="VisibleElements" unique_id=613706631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -17.5
+offset_right = 80.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Você Tentou descançar?
+Explore o mapa"
+label_settings = ExtResource("2_rb3af")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VisibleElements" unique_id=1316599996]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=413122470]
+libraries/ = SubResource("AnimationLibrary_kpfqm")
+
+[node name="Cover" type="ColorRect" parent="." unique_id=1860915110]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="VisibleElements/RetryButton" to="." method="_on_retry_button_pressed"]
