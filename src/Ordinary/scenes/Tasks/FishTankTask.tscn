@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2lnurokls6ue"]
 
 [ext_resource type="Script" uid="uid://c416bt6tfeq0w" path="res://scripts/task_interactable.gd" id="1_4o5xo"]
-[ext_resource type="PackedScene" uid="uid://c736nhn5gvlxg" path="res://scenes/minigames/fishtank/fish_game.tscn" id="2_mqxam"]
+[ext_resource type="PackedScene" uid="uid://cbjan0fkk1re0" path="res://scenes/minigames/fishtank/fishtank_minigame.tscn" id="2_mqxam"]
 [ext_resource type="Texture2D" uid="uid://d12qp7pbvcmu2" path="res://icon.svg" id="2_wo2mm"]
 [ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="3_xaq8y"]
 

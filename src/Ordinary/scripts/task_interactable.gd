@@ -13,19 +13,15 @@ func _on_interactable_interacted(player: Player) -> void:
 	animation_player.play(animation)
 	await animation_player.animation_finished
 	
-	var should_apply_exhaustion := true
-	
 	if minigame:
-		print("minigame started")
 		var game = GameManager.start_minigame(minigame)
 		game.failed.connect(func(): 
-			should_apply_exhaustion = false
+			GameState.exhaustion_level -= exhaustion_cost
 			)
 		
 	player.enable_input(true)
 	
 	GameState.exhaustion_level += exhaustion_cost
-	print("")
 	
 	if not task.is_empty():
 		GameState.complete_task(task)

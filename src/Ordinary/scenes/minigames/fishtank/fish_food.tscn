@@ -4,15 +4,29 @@
 [ext_resource type="Script" uid="uid://cf8vjonh10grq" path="res://scripts/Minigame/fishtank/fish_food.gd" id="2_4r01n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4gkr"]
-radius = 55.081764
+radius = 6.000001
 
-[node name="FishFood" type="RigidBody2D" unique_id=1059462943]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh6qn"]
+radius = 14.035668
+
+[node name="FishFood" type="RigidBody2D" unique_id=1850049993]
+gravity_scale = 0.2
 script = ExtResource("2_4r01n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699453000]
-scale = Vector2(0.99999994, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1661411148]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_vh6qn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=327058800]
+rotation = -0.19135197
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_h4gkr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1398684782]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_vh6qn")
+[node name="EatZone" type="Area2D" parent="." unique_id=1282772412]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EatZone" unique_id=524643931]
+shape = SubResource("CircleShape2D_vh6qn")
+
+[connection signal="body_entered" from="EatZone" to="." method="_on_eat_zone_body_entered"]

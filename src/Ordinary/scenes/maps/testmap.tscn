@@ -22,27 +22,37 @@ scale = Vector2(0.3, 0.3)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=876166243]
 
-[node name="TasksList" parent="UI" unique_id=1070871434 instance=ExtResource("3_mgnd1")]
-offset_left = 15.0
-offset_top = 17.0
-offset_right = 15.0
-offset_bottom = 17.0
+[node name="HUD" type="Control" parent="UI" unique_id=1934115040]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="InteractionIcon" parent="UI" unique_id=673012942 instance=ExtResource("4_goqyv")]
+[node name="InteractionIcon" parent="UI/HUD" unique_id=673012942 instance=ExtResource("4_goqyv")]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -6.0
-offset_top = -30.0
+offset_top = -31.0
 offset_right = 6.0
-offset_bottom = -13.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="TasksList" parent="UI/HUD" unique_id=1070871434 instance=ExtResource("3_mgnd1")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 6.0
+offset_bottom = 3.0
+
 [node name="FishTank" parent="." unique_id=1522172788 instance=ExtResource("4_mgwiw")]
-position = Vector2(276, 489)
+position = Vector2(245, 291)
 scale = Vector2(0.3, 0.3)
 
 [node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]

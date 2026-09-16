@@ -28,7 +28,14 @@ func start_minigame(game_scene: PackedScene) -> MinigameBase:
 	var game = game_scene.instantiate()
 	if game is MinigameBase:
 		get_tree().current_scene.get_node("UI").add_child(game)
-		game.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		get_tree().current_scene.get_node("UI").get_node("HUD").hide()
+		game.process_mode = Node.PROCESS_MODE_ALWAYS
+		game.start()
+		game.end.connect(func(): 
+			get_tree().current_scene.get_node("UI").remove_child(game)
+			get_tree().current_scene.get_node("UI").get_node("HUD").show()
+			get_tree().paused = false
+			)
 	else:
 		print("minigame should be a MinigameBase")
 	return game
