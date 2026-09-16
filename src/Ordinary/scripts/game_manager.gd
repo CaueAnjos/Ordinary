@@ -27,10 +27,14 @@ func start_minigame(game_scene: PackedScene) -> MinigameBase:
 	get_tree().paused = true
 	var game = game_scene.instantiate()
 	if game is MinigameBase:
+		# Set this before add_child() so the whole subtree (and its _ready()
+		# calls, e.g. the intro animation) is never left racing the pause
+		# state - it should always be able to process/receive input.
+		game.process_mode = Node.PROCESS_MODE_ALWAYS
 		get_tree().current_scene.get_node("UI").add_child(game)
 		get_tree().current_scene.get_node("UI").get_node("HUD").hide()
-		game.process_mode = Node.PROCESS_MODE_ALWAYS
-		game.start()
+		# game.start() is already called by MinigameBase._ready() once the
+		# intro animation finishes - don't call it again here.
 		game.end.connect(func(): 
 			get_tree().current_scene.get_node("UI").remove_child(game)
 			get_tree().current_scene.get_node("UI").get_node("HUD").show()

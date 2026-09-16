@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="3_mgnd1"]
 [ext_resource type="PackedScene" uid="uid://bobk8u6loank1" path="res://scenes/UI/interaction_icon.tscn" id="4_goqyv"]
 [ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="4_mgwiw"]
+[ext_resource type="PackedScene" uid="uid://b6qkiot3skyeo" path="res://scenes/Tasks/CoffeTask.tscn" id="7_o7ia3"]
 
 [node name="Map" type="Node2D" unique_id=317377056]
 
@@ -57,3 +58,7 @@ scale = Vector2(0.3, 0.3)
 
 [node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]
 position = Vector2(281, 112)
+
+[node name="TaskInteractable" parent="." unique_id=647623159 instance=ExtResource("7_o7ia3")]
+position = Vector2(-86, 171)
+scale = Vector2(0.3, 0.3)

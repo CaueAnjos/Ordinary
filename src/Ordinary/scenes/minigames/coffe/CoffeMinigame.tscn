@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://cmosxul3dlujy"]
 
-[ext_resource type="Script" uid="uid://pkrbd7ug72y2" path="res://scripts/Minigame/minigame_base.gd" id="1_hkfwc"]
 [ext_resource type="Texture2D" uid="uid://bdn6frbjasxmn" path="res://assets/battery-level-90-charging-svgrepo-com.svg" id="2_o0axc"]
+[ext_resource type="Script" uid="uid://bfegdeevd1jt" path="res://scripts/Minigame/coffee/coffee_minigame.gd" id="3_coffee"]
+[ext_resource type="Script" uid="uid://ik7tr7fs37w7" path="res://scripts/Minigame/coffee/draggable_item.gd" id="4_dragitem"]
+[ext_resource type="Script" uid="uid://bjhe81drfxcsf" path="res://scripts/Minigame/coffee/drop_zone.gd" id="5_dropzone"]
+[ext_resource type="Script" uid="uid://bjogna05w3oq5" path="res://scripts/Minigame/coffee/drop_slot.gd" id="6_dropslot"]
 
 [sub_resource type="Animation" id="Animation_u20di"]
 resource_name = "EndMinigame"
@@ -100,8 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hkfwc")
-metadata/_custom_type_script = "uid://pkrbd7ug72y2"
+script = ExtResource("3_coffee")
 
 [node name="Visible" type="Control" parent="." unique_id=289240096]
 visible = false
@@ -129,6 +131,172 @@ offset_bottom = 851.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_o0axc")
 
+[node name="DropZone" type="Control" parent="Visible" unique_id=402827920]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 196.0
+offset_bottom = 37.0
+script = ExtResource("5_dropzone")
+
+[node name="SlotSugar" type="Control" parent="Visible/DropZone" unique_id=388533269]
+anchors_preset = 0
+offset_right = 28.0
+offset_bottom = 22.0
+script = ExtResource("6_dropslot")
+required_item_id = &"sugar"
+
+[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotSugar" unique_id=2102628810]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.98, 0.98, 0.95, 0.25)
+
+[node name="Label" type="Label" parent="Visible/DropZone/SlotSugar" unique_id=1134480717]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 8
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotCoffee" type="Control" parent="Visible/DropZone" unique_id=1984728380]
+anchors_preset = 0
+offset_left = 34.0
+offset_right = 62.0
+offset_bottom = 22.0
+script = ExtResource("6_dropslot")
+required_item_id = &"coffee"
+
+[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotCoffee" unique_id=708522777]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.35, 0.2, 0.08, 0.25)
+
+[node name="Label" type="Label" parent="Visible/DropZone/SlotCoffee" unique_id=1101213124]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 8
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotMilk" type="Control" parent="Visible/DropZone" unique_id=176883168]
+anchors_preset = 0
+offset_left = 68.0
+offset_right = 96.0
+offset_bottom = 22.0
+script = ExtResource("6_dropslot")
+required_item_id = &"milk"
+
+[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotMilk" unique_id=1426225539]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.85, 1, 0.25)
+
+[node name="Label" type="Label" parent="Visible/DropZone/SlotMilk" unique_id=1503164174]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 8
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemsTray" type="Control" parent="Visible" unique_id=1943615536]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 142.0
+offset_right = 106.0
+offset_bottom = 162.0
+
+[node name="ItemMilk" type="Control" parent="Visible/ItemsTray" unique_id=1435146768]
+anchors_preset = 0
+offset_right = 26.0
+offset_bottom = 20.0
+script = ExtResource("4_dragitem")
+item_id = &"milk"
+display_name = "Milk"
+color = Color(0.85, 0.85, 1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemMilk" unique_id=1522978044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.85, 0.85, 1, 1)
+
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemMilk" unique_id=1109340673]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 6
+text = "Milk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemSugar" type="Control" parent="Visible/ItemsTray" unique_id=1437195596]
+anchors_preset = 0
+offset_left = 32.0
+offset_right = 58.0
+offset_bottom = 20.0
+script = ExtResource("4_dragitem")
+item_id = &"sugar"
+display_name = "Sugar"
+color = Color(0.98, 0.98, 0.95, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemSugar" unique_id=1249135307]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.98, 0.98, 0.95, 1)
+
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemSugar" unique_id=655697114]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 6
+text = "Sugar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemCoffee" type="Control" parent="Visible/ItemsTray" unique_id=1813033761]
+anchors_preset = 0
+offset_left = 64.0
+offset_right = 90.0
+offset_bottom = 20.0
+script = ExtResource("4_dragitem")
+item_id = &"coffee"
+display_name = "Coffee"
+color = Color(0.35, 0.2, 0.08, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemCoffee" unique_id=1523980445]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.35, 0.2, 0.08, 1)
+
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemCoffee" unique_id=2131367998]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 6
+text = "Coffee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=766704358]
 layout_mode = 1
 anchors_preset = 15
@@ -136,7 +304,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="DragLayer" type="Control" parent="." unique_id=-474792745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1519341189]
 libraries/ = SubResource("AnimationLibrary_eelwh")
