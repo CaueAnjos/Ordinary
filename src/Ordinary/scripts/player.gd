@@ -4,7 +4,7 @@ class_name Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
-const SPEED := 300.0
+const SPEED := 120.0
 var input_enabled := true
 var last_direction := "down"  # remembers facing for idle animation
 

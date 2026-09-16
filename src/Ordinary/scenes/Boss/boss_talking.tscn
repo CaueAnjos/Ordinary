@@ -42,7 +42,6 @@ _data = {
 }
 
 [node name="BossTalking" type="Node2D" unique_id=1145223740]
-scale = Vector2(6, 6)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=421138059]
 texture = ExtResource("1_63rv0")

@@ -175,14 +175,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
-size = Vector2(23.316914, 23.333334)
+size = Vector2(10.375, 6.333333)
 
 [node name="Player" type="CharacterBody2D" unique_id=26199935 groups=["Player"]]
 script = ExtResource("1_v6fml")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=39809143]
 position = Vector2(1.0000153, -2)
-scale = Vector2(6, 6)
 texture = ExtResource("2_v6fml")
 hframes = 4
 vframes = 4
@@ -191,6 +190,5 @@ vframes = 4
 libraries/ = SubResource("AnimationLibrary_mdl7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=139969333]
-position = Vector2(-2.500001, 64.5)
-scale = Vector2(3.045, 1.5)
+position = Vector2(1, 9)
 shape = SubResource("RectangleShape2D_5q5h1")

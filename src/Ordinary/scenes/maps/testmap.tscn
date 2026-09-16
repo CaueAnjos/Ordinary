@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="3_mgnd1"]
 [ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="4_mgwiw"]
 
-[node name="Node2D" type="Node2D" unique_id=317377056]
+[node name="Map" type="Node2D" unique_id=317377056]
 
 [node name="Player" parent="." unique_id=26199935 instance=ExtResource("1_j8icx")]
 z_index = 5
@@ -14,13 +14,10 @@ position = Vector2(129, 57)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=320755467]
 position = Vector2(-2, 1)
-position_smoothing_enabled = true
-
-[node name="BossTalking" parent="Player" unique_id=1145223740 instance=ExtResource("2_c27os")]
-position = Vector2(531, 496)
 
 [node name="Interactable1" parent="." unique_id=1891914535 instance=ExtResource("2_fcinl")]
 position = Vector2(590, 155)
+scale = Vector2(0.3, 0.3)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=876166243]
 
@@ -32,3 +29,7 @@ offset_bottom = 17.0
 
 [node name="FishTank" parent="." unique_id=1522172788 instance=ExtResource("4_mgwiw")]
 position = Vector2(276, 489)
+scale = Vector2(0.3, 0.3)
+
+[node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]
+position = Vector2(281, 112)
