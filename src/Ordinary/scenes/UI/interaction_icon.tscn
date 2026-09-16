@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bobk8u6loank1"]
+
+[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="1_5bohs"]
+[ext_resource type="Script" uid="uid://xygufed7fl28" path="res://scripts/interaction_icon.gd" id="2_36j37"]
+
+[node name="InteractionIcon" type="Label" unique_id=673012942]
+z_index = -1
+offset_right = 12.0
+offset_bottom = 17.0
+text = "E"
+label_settings = ExtResource("1_5bohs")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_36j37")

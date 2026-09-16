@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dh7qlq6bn0l80" path="res://scenes/Boss/boss_talking.tscn" id="2_c27os"]
 [ext_resource type="PackedScene" uid="uid://dyepwuw7xcahs" path="res://scenes/TaskInteractable.tscn" id="2_fcinl"]
 [ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="3_mgnd1"]
+[ext_resource type="PackedScene" uid="uid://bobk8u6loank1" path="res://scenes/UI/interaction_icon.tscn" id="4_goqyv"]
 [ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="4_mgwiw"]
 
 [node name="Map" type="Node2D" unique_id=317377056]
@@ -26,6 +27,19 @@ offset_left = 15.0
 offset_top = 17.0
 offset_right = 15.0
 offset_bottom = 17.0
+
+[node name="InteractionIcon" parent="UI" unique_id=673012942 instance=ExtResource("4_goqyv")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -30.0
+offset_right = 6.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="FishTank" parent="." unique_id=1522172788 instance=ExtResource("4_mgwiw")]
 position = Vector2(276, 489)

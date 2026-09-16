@@ -15,12 +15,14 @@ func _ready() -> void:
 func _on_interactable_area_entered(body) -> void:
 	if body.is_in_group("Player") and body is Player:
 		player_is_inside = true
+		GameState.can_interact = true
 		player = body
 		print("Player is inside interactable area")
 	
 func _on_interactable_area_exited(body) -> void:
 	if body.is_in_group("Player") and body is Player:
 		player_is_inside = false
+		GameState.can_interact = false
 		player = null
 		print("Player exited interactable area")
 		

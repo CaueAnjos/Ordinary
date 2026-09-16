@@ -9,6 +9,16 @@ var exhaustion_level: int:
 			exhaustion_reaches_max.emit()
 	
 var player_position := Vector2.ZERO
+var can_interact := false:
+	set(value): 
+		can_interact = value
+		if value:
+			nier_interaction.emit()
+		else:
+			far_interaction.emit()
+
+signal nier_interaction
+signal far_interaction
 
 signal exhaustion_reaches_max
 signal completed_task(String)
@@ -28,6 +38,7 @@ func complete_task(task: String) -> void:
 
 
 func restart_game_state() -> void:
+	can_interact = false
 	player_position = Vector2.ZERO
 	completed_tasks_num = 0
 	exhaustion_level = 0
