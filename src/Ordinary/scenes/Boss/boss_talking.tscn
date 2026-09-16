@@ -41,7 +41,10 @@ _data = {
 &"RESET": SubResource("Animation_abkvx")
 }
 
-[node name="BossTalking" type="Node2D" unique_id=1145223740]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gkr"]
+size = Vector2(15, 29)
+
+[node name="BossTalking" type="StaticBody2D" unique_id=1287487677]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=421138059]
 texture = ExtResource("1_63rv0")
@@ -50,3 +53,7 @@ hframes = 3
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155474515]
 libraries/ = SubResource("AnimationLibrary_8n52u")
 speed_scale = 9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347901421]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_h4gkr")

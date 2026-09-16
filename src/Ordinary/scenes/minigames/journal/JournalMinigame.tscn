@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://rawp3q6hjhxc"]
+
+[ext_resource type="Script" uid="uid://my0gdsuhsn3e" path="res://scripts/Minigame/journal/journal_minigame.gd" id="1_journal"]
+[ext_resource type="Script" uid="uid://eo605qqtgkd7" path="res://scripts/Minigame/journal/word_zone.gd" id="2_wordzone"]
+[ext_resource type="Script" uid="uid://b0wfreanqep1v" path="res://scripts/Minigame/journal/word_slot.gd" id="3_wordslot"]
+[ext_resource type="Script" uid="uid://c2hjrm6bds7np" path="res://scripts/Minigame/journal/word_tile.gd" id="4_wordtile"]
+
+[sub_resource type="Animation" id="Animation_end"]
+resource_name = "EndMinigame"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visible:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visible:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_start"]
+resource_name = "StartMinigame"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visible:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_journal"]
+_data = {
+&"EndMinigame": SubResource("Animation_end"),
+&"RESET": SubResource("Animation_reset"),
+&"StartMinigame": SubResource("Animation_start")
+}
+
+[node name="JournalMinigame" type="Control" unique_id=242579313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_journal")
+
+[node name="Visible" type="Control" parent="." unique_id=271972200]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WordZone" type="Control" parent="Visible" unique_id=1495807984]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+script = ExtResource("2_wordzone")
+
+[node name="SlotDiary" type="Control" parent="Visible/WordZone" unique_id=680415697]
+anchors_preset = 0
+offset_top = 32.0
+offset_bottom = 32.0
+script = ExtResource("3_wordslot")
+expected_word_id = &"DIARY"
+length = 5
+
+[node name="SlotSki" type="Control" parent="Visible/WordZone" unique_id=849850082]
+anchors_preset = 0
+offset_left = 16.0
+offset_right = 16.0
+script = ExtResource("3_wordslot")
+expected_word_id = &"SKI"
+is_vertical = true
+
+[node name="SlotKid" type="Control" parent="Visible/WordZone" unique_id=1511723495]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("3_wordslot")
+expected_word_id = &"KID"
+
+[node name="WordTray" type="Control" parent="Visible" unique_id=1108571158]
+anchors_preset = 0
+offset_left = 110.0
+offset_top = 10.0
+offset_right = 220.0
+offset_bottom = 130.0
+
+[node name="TileDiary" type="Control" parent="Visible/WordTray" unique_id=1068220823]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 10.0
+offset_bottom = 20.0
+script = ExtResource("4_wordtile")
+word_id = &"DIARY"
+text = "DIARY"
+is_vertical = true
+
+[node name="Background" type="ColorRect" parent="Visible/WordTray/TileDiary" unique_id=898863651]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0.9, 0.85, 0.7, 1)
+
+[node name="Toolbar" type="Control" parent="Visible/WordTray/TileDiary" unique_id=1897010494]
+anchors_preset = 0
+
+[node name="RotateButton" type="Button" parent="Visible/WordTray/TileDiary/Toolbar" unique_id=2078052889]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "R"
+
+[node name="InvertButton" type="Button" parent="Visible/WordTray/TileDiary/Toolbar" unique_id=1832432365]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 26.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "F"
+
+[node name="TileSki" type="Control" parent="Visible/WordTray" unique_id=1852733548]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 20.0
+script = ExtResource("4_wordtile")
+word_id = &"SKI"
+text = "SKI"
+is_reversed = true
+
+[node name="Background" type="ColorRect" parent="Visible/WordTray/TileSki" unique_id=1318830787]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0.9, 0.85, 0.7, 1)
+
+[node name="Toolbar" type="Control" parent="Visible/WordTray/TileSki" unique_id=472190608]
+anchors_preset = 0
+
+[node name="RotateButton" type="Button" parent="Visible/WordTray/TileSki/Toolbar" unique_id=356004561]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "R"
+
+[node name="InvertButton" type="Button" parent="Visible/WordTray/TileSki/Toolbar" unique_id=1559443608]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 26.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "F"
+
+[node name="TileKid" type="Control" parent="Visible/WordTray" unique_id=1494913591]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 50.0
+offset_bottom = 60.0
+script = ExtResource("4_wordtile")
+word_id = &"KID"
+text = "KID"
+is_reversed = true
+
+[node name="Background" type="ColorRect" parent="Visible/WordTray/TileKid" unique_id=835649197]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0.9, 0.85, 0.7, 1)
+
+[node name="Toolbar" type="Control" parent="Visible/WordTray/TileKid" unique_id=687263406]
+anchors_preset = 0
+
+[node name="RotateButton" type="Button" parent="Visible/WordTray/TileKid/Toolbar" unique_id=772014735]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "R"
+
+[node name="InvertButton" type="Button" parent="Visible/WordTray/TileKid/Toolbar" unique_id=2120311120]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 26.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "F"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1190203822]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DragLayer" type="Control" parent="." unique_id=450645701]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=486172920]
+libraries/ = SubResource("AnimationLibrary_journal")
