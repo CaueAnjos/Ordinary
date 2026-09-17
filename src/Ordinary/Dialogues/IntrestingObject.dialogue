@@ -1,0 +1,17 @@
+~ start
+Você: Que objeto interessando. O que é?
+=> question
+
+~ repeat
+Você: Humm... Acho que não
+=> END
+
+
+~ question
+- Godot
+	Você: Realmente.
+- Unreal
+	=> repeat
+- Unity
+	=> repeat
+=> END

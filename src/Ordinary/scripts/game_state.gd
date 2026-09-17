@@ -29,9 +29,14 @@ signal win_game # this is dead code
 
 var completed_tasks_num := 0
 
+## True once every regular task has been completed and the final "talk to the boss"
+## task has been added to the list. Checked by the boss to change its dialogue.
+var all_tasks_completed := false
+
 
 func restart_game_state() -> void:
 	can_interact = false
 	player_position = Vector2.ZERO
 	completed_tasks_num = 0
 	exhaustion_level = 0
+	all_tasks_completed = false

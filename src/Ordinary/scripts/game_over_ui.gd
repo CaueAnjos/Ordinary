@@ -14,5 +14,5 @@ func _ready() -> void:
 			
 	$AnimationPlayer.play("GameOver_fadein")
 
-func _on_retry_button_pressed() -> void:
-	GameManager.restart_game()
+func _on_menu_button_pressed() -> void:
+	GameManager.go_to_main_menu()

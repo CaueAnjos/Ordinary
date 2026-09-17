@@ -9,6 +9,8 @@ enum Reason { TIMEOUT, EXHAUSTION }
 var reason := Reason.EXHAUSTION
 
 const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
+const WIN_SCREEN_SCENE = preload("res://scenes/UI/win_screen.tscn")
+const MAIN_MENU_SCENE = preload("res://scenes/UI/main_menu.tscn")
 
 func _ready() -> void:
 	GameState.exhaustion_reaches_max.connect(game_over)
@@ -57,7 +59,22 @@ func game_over() -> void:
 	
 	
 func game_win() -> void:
-	pass
+	is_game_over = true
+	add_ui(WIN_SCREEN_SCENE)
+	get_tree().paused = true
+
+
+func go_to_main_menu() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
+
+
+func load_scene(scene: PackedScene) -> void:
+	get_tree().paused = false
+	GameState.restart_game_state()
+	is_game_over = false
+	get_tree().change_scene_to_packed(scene)
+
 
 func restart_game() -> void:
 	get_tree().reload_current_scene()

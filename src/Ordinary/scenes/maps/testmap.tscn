@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/DialogueInteractable.tscn" id="6_2nkbr"]
 [ext_resource type="PackedScene" uid="uid://ddm50uuyhqyae" path="res://scenes/UI/hud.tscn" id="7_n6foo"]
 [ext_resource type="PackedScene" uid="uid://b6qkiot3skyeo" path="res://scenes/Tasks/CoffeTask.tscn" id="7_o7ia3"]
+[ext_resource type="Resource" uid="uid://ci1xmfdwj03n8" path="res://Dialogues/IntrestingObject.dialogue" id="7_ytmpc"]
 [ext_resource type="PackedScene" uid="uid://c8des1gg3w7yk" path="res://scenes/Tasks/JournalTask.tscn" id="8_n6foo"]
 [ext_resource type="PackedScene" uid="uid://b8kkp3oe02n1g" path="res://scenes/tasks_container.tscn" id="8_wgv6b"]
 
@@ -38,6 +39,8 @@ scale = Vector2(0.3, 0.3)
 
 [node name="DialogueInteractable" parent="TasksContainer" unique_id=1802381719 instance=ExtResource("6_2nkbr")]
 position = Vector2(102, 362)
+dialogue = ExtResource("7_ytmpc")
+start_title = "start"
 
 [node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]
 position = Vector2(281, 112)
@@ -45,6 +48,7 @@ task_id = "GetTasks"
 
 [node name="Player" parent="." unique_id=26199935 instance=ExtResource("1_j8icx")]
 z_index = 5
+y_sort_enabled = true
 position = Vector2(129, 57)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=320755467]

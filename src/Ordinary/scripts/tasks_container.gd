@@ -8,6 +8,11 @@ class Task:
 	var hidden: bool
 
 
+## The id/label of the task automatically added once every other task is completed.
+const FINAL_TASK_ID := "TalkToBoss"
+const FINAL_TASK_LABEL := "Falar com o Chefe"
+
+
 @export var extra_tasks: Dictionary[String, String]
 
 
@@ -30,6 +35,34 @@ func mark_task_as_complete(id: String):
 	tasks[id].completed = true
 	complete_any_task.emit()
 	complete_task.emit(id)
+	_check_all_tasks_completed()
+
+
+# Checks whether every tracked task is done and reacts accordingly:
+# - If the final task doesn't exist yet and everything else is done, add it.
+# - If the final task exists and is also done, every task is truly complete.
+func _check_all_tasks_completed() -> void:
+	for id in tasks:
+		if not tasks[id].completed:
+			return
+
+	if not tasks.has(FINAL_TASK_ID):
+		_add_final_task()
+	else:
+		GameState.completed_all_tasks.emit()
+
+
+# Adds the final "talk to the boss" task once every other task has been completed.
+func _add_final_task() -> void:
+	var task := Task.new()
+	task.id = FINAL_TASK_ID
+	task.label = FINAL_TASK_LABEL
+	task.completed = false
+	task.hidden = false
+	tasks[task.id] = task
+
+	GameState.all_tasks_completed = true
+	unhided_task.emit(task.id)
 
 
 func unhide_all_tasks() -> void:

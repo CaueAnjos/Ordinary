@@ -1,12 +1,15 @@
-[gd_scene format=3 uid="uid://c1p34jq5j30ba"]
+[gd_scene format=3 uid="uid://c8g2n5f0y1x8w"]
 
-[ext_resource type="Script" uid="uid://dgjysiddf45n5" path="res://scripts/game_over_ui.gd" id="1_fdnlv"]
-[ext_resource type="LabelSettings" uid="uid://cu74int3p117i" path="res://assets/text/titles.tres" id="2_r0mit"]
-[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_rb3af"]
-[ext_resource type="FontFile" uid="uid://duwiad336pkxp" path="res://assets/text/fonts/8bitoperatorregular.ttf" id="3_kpfqm"]
+[ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_win01"]
+[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_win02"]
+[ext_resource type="FontFile" uid="uid://duwiad336pkxp" path="res://assets/text/fonts/8bitoperatorregular.ttf" id="3_win03"]
 
-[sub_resource type="Animation" id="Animation_r0mit"]
-resource_name = "GameOver_fadein"
+[sub_resource type="LabelSettings" id="LabelSettings_wintitle"]
+font = ExtResource("3_win03")
+font_color = Color(0.4392157, 0.68235296, 0, 1)
+
+[sub_resource type="Animation" id="Animation_winfadein"]
+resource_name = "WinScreen_fadein"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -33,7 +36,7 @@ tracks/1/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_kpfqm"]
+[sub_resource type="Animation" id="Animation_winreset"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -60,13 +63,13 @@ tracks/1/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpfqm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_win"]
 _data = {
-&"GameOver_fadein": SubResource("Animation_r0mit"),
-&"RESET": SubResource("Animation_kpfqm")
+&"RESET": SubResource("Animation_winreset"),
+&"WinScreen_fadein": SubResource("Animation_winfadein")
 }
 
-[node name="GameOver" type="Control" unique_id=2055946321]
+[node name="WinScreen" type="Control" unique_id=2055946322]
 z_index = 5
 layout_mode = 3
 anchors_preset = 15
@@ -74,9 +77,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fdnlv")
+script = ExtResource("1_win01")
 
-[node name="Cover" type="ColorRect" parent="." unique_id=1860915110]
+[node name="Cover" type="ColorRect" parent="."]
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -86,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="VisibleElements" type="Control" parent="." unique_id=1770898352]
+[node name="VisibleElements" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -96,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
 
-[node name="Game Over" type="Label" parent="VisibleElements" unique_id=1184402022]
+[node name="Title" type="Label" parent="VisibleElements"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -105,12 +108,12 @@ offset_top = 12.0
 offset_right = 87.0
 offset_bottom = 57.0
 grow_horizontal = 2
-text = "Game Over"
-label_settings = ExtResource("2_r0mit")
+text = "Você Venceu!"
+label_settings = SubResource("LabelSettings_wintitle")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tip" type="Label" parent="VisibleElements" unique_id=613706631]
+[node name="Tip" type="Label" parent="VisibleElements"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -122,13 +125,13 @@ offset_right = 80.5
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Você Tentou descançar?
-Explore o mapa"
-label_settings = ExtResource("2_rb3af")
+text = "Você entregou tudo a tempo.
+Parabéns!"
+label_settings = ExtResource("2_win02")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="VisibleElements" unique_id=1316599996]
+[node name="ColorRect" type="ColorRect" parent="VisibleElements"]
 z_index = -1
 layout_mode = 0
 anchor_right = 1.0
@@ -137,7 +140,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MenuButton" type="Button" parent="VisibleElements" unique_id=457908873]
+[node name="MenuButton" type="Button" parent="VisibleElements"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
@@ -152,11 +155,11 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.78431374, 0.43529412, 0.5176471, 1)
 theme_override_colors/font_pressed_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
 theme_override_colors/font_hover_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
-theme_override_fonts/font = ExtResource("3_kpfqm")
+theme_override_fonts/font = ExtResource("3_win03")
 theme_override_font_sizes/font_size = 10
 text = "Menu Principal"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=413122470]
-libraries/ = SubResource("AnimationLibrary_kpfqm")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries/ = SubResource("AnimationLibrary_win")
 
 [connection signal="pressed" from="VisibleElements/MenuButton" to="." method="_on_menu_button_pressed"]

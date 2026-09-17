@@ -162,6 +162,7 @@ theme_override_fonts/bold_font = ExtResource("2_l4n3q")
 theme_override_fonts/bold_italics_font = ExtResource("2_l4n3q")
 theme_override_fonts/italics_font = ExtResource("2_l4n3q")
 theme_override_fonts/mono_font = ExtResource("2_l4n3q")
+theme_override_styles/normal = ExtResource("4_385qc")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
