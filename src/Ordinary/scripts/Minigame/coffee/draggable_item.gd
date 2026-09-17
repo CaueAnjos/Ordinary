@@ -10,17 +10,18 @@ class_name DraggableItem
 		if label:
 			label.text = value
 
+## Tint applied to the item's icon texture. Defaults to white (no tint).
 @export var color: Color = Color.WHITE:
 	set(value):
 		color = value
-		if color_rect:
-			color_rect.color = value
+		if icon:
+			icon.modulate = value
 
 ## How quickly the item catches up to the cursor while dragging. Higher =
 ## snappier/stiffer, lower = smoother/laggier follow.
 @export var follow_smoothing := 22.0
 
-@onready var color_rect: ColorRect = $ColorRect
+@onready var icon: TextureRect = $Icon
 @onready var label: Label = $Label
 
 const RETURN_DURATION := 0.25
@@ -46,7 +47,7 @@ func _ready() -> void:
 
 	# Re-apply exported values now that the child nodes exist.
 	label.text = display_name
-	color_rect.color = color
+	icon.modulate = color
 
 
 ## Picking the item up: only fires when the click actually lands on this

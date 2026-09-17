@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://cmosxul3dlujy"]
 
-[ext_resource type="Texture2D" uid="uid://bdn6frbjasxmn" path="res://assets/battery-level-90-charging-svgrepo-com.svg" id="2_o0axc"]
+[ext_resource type="Texture2D" uid="uid://8lcio6m5eqn8" path="res://assets/Minigames/CoffeMakerNaked.png" id="2_nhlgy"]
 [ext_resource type="Script" uid="uid://bfegdeevd1jt" path="res://scripts/Minigame/coffee/coffee_minigame.gd" id="3_coffee"]
 [ext_resource type="Script" uid="uid://ik7tr7fs37w7" path="res://scripts/Minigame/coffee/draggable_item.gd" id="4_dragitem"]
 [ext_resource type="Script" uid="uid://bjhe81drfxcsf" path="res://scripts/Minigame/coffee/drop_zone.gd" id="5_dropzone"]
 [ext_resource type="Script" uid="uid://bjogna05w3oq5" path="res://scripts/Minigame/coffee/drop_slot.gd" id="6_dropslot"]
+[ext_resource type="Texture2D" uid="uid://b33mmkd66bl7p" path="res://assets/Minigames/CoffeCup.png" id="6_m0kra"]
+[ext_resource type="Texture2D" uid="uid://bn055nb7tvfet" path="res://assets/Minigames/CoffeFilter.png" id="7_filter"]
+[ext_resource type="Texture2D" uid="uid://ogd86yuwjls6" path="res://assets/Minigames/WaterGlass.png" id="8_water"]
 
 [sub_resource type="Animation" id="Animation_u20di"]
 resource_name = "EndMinigame"
@@ -33,6 +36,9 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="Animation" id="Animation_bdivf"]
+resource_name = "MakeCoffe"
 
 [sub_resource type="Animation" id="Animation_eelwh"]
 length = 0.001
@@ -92,6 +98,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eelwh"]
 _data = {
 &"EndMinigame": SubResource("Animation_u20di"),
+&"MakeCoffe": SubResource("Animation_bdivf"),
 &"RESET": SubResource("Animation_eelwh"),
 &"StartMinigame": SubResource("Animation_fydn4")
 }
@@ -124,36 +131,39 @@ grow_vertical = 2
 
 [node name="CoffeMaker" type="TextureRect" parent="Visible" unique_id=865485694]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 51.0
-offset_right = 811.0
-offset_bottom = 851.0
+offset_left = 124.99999
+offset_top = 33.0
+offset_right = 925.0
+offset_bottom = 833.0
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_o0axc")
+texture = ExtResource("2_nhlgy")
 
-[node name="DropZone" type="Control" parent="Visible" unique_id=402827920]
+[node name="DropZone" type="Control" parent="Visible/CoffeMaker" unique_id=402827920]
 anchors_preset = 0
-offset_left = 100.0
-offset_top = 15.0
-offset_right = 196.0
-offset_bottom = 37.0
+offset_left = -70.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 92.0
+scale = Vector2(10, 10)
 script = ExtResource("5_dropzone")
 
-[node name="SlotSugar" type="Control" parent="Visible/DropZone" unique_id=388533269]
+[node name="SlotWater" type="Control" parent="Visible/CoffeMaker/DropZone" unique_id=388533269]
 anchors_preset = 0
-offset_right = 28.0
-offset_bottom = 22.0
+offset_left = 71.00001
+offset_top = -10.0
+offset_right = 99.00001
+offset_bottom = 12.0
 script = ExtResource("6_dropslot")
-required_item_id = &"sugar"
+required_item_id = &"water"
 
-[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotSugar" unique_id=2102628810]
+[node name="Ghost" type="ColorRect" parent="Visible/CoffeMaker/DropZone/SlotWater" unique_id=2102628810]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.98, 0.98, 0.95, 0.25)
 
-[node name="Label" type="Label" parent="Visible/DropZone/SlotSugar" unique_id=1134480717]
+[node name="Label" type="Label" parent="Visible/CoffeMaker/DropZone/SlotWater" unique_id=1134480717]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -162,22 +172,23 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlotCoffee" type="Control" parent="Visible/DropZone" unique_id=1984728380]
+[node name="SlotFilter" type="Control" parent="Visible/CoffeMaker/DropZone" unique_id=1984728380]
 anchors_preset = 0
-offset_left = 34.0
-offset_right = 62.0
-offset_bottom = 22.0
+offset_left = 13.0
+offset_top = 29.0
+offset_right = 41.0
+offset_bottom = 51.0
 script = ExtResource("6_dropslot")
-required_item_id = &"coffee"
+required_item_id = &"filter"
 
-[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotCoffee" unique_id=708522777]
+[node name="Ghost" type="ColorRect" parent="Visible/CoffeMaker/DropZone/SlotFilter" unique_id=708522777]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.35, 0.2, 0.08, 0.25)
 
-[node name="Label" type="Label" parent="Visible/DropZone/SlotCoffee" unique_id=1101213124]
+[node name="Label" type="Label" parent="Visible/CoffeMaker/DropZone/SlotFilter" unique_id=1101213124]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -186,22 +197,23 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlotMilk" type="Control" parent="Visible/DropZone" unique_id=176883168]
+[node name="SlotCup" type="Control" parent="Visible/CoffeMaker/DropZone" unique_id=176883168]
 anchors_preset = 0
-offset_left = 68.0
-offset_right = 96.0
-offset_bottom = 22.0
+offset_left = 31.0
+offset_top = 46.0
+offset_right = 59.0
+offset_bottom = 68.0
 script = ExtResource("6_dropslot")
 required_item_id = &"milk"
 
-[node name="Ghost" type="ColorRect" parent="Visible/DropZone/SlotMilk" unique_id=1426225539]
+[node name="Ghost" type="ColorRect" parent="Visible/CoffeMaker/DropZone/SlotCup" unique_id=1426225539]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color(0.85, 0.85, 1, 0.25)
+color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="Visible/DropZone/SlotMilk" unique_id=1503164174]
+[node name="Label" type="Label" parent="Visible/CoffeMaker/DropZone/SlotCup" unique_id=1503164174]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -212,21 +224,20 @@ vertical_alignment = 1
 
 [node name="ItemsTray" type="Control" parent="Visible" unique_id=1943615536]
 anchors_preset = 0
-offset_left = 10.0
-offset_top = 142.0
-offset_right = 106.0
-offset_bottom = 162.0
+offset_left = 119.0
+offset_top = 139.0
+offset_right = 215.0
+offset_bottom = 175.0
 
-[node name="ItemMilk" type="Control" parent="Visible/ItemsTray" unique_id=1435146768]
+[node name="ItemCup" type="Control" parent="Visible/ItemsTray" unique_id=1435146768]
 anchors_preset = 0
 offset_right = 26.0
-offset_bottom = 20.0
+offset_bottom = 27.0
 script = ExtResource("4_dragitem")
 item_id = &"milk"
 display_name = "Milk"
-color = Color(0.85, 0.85, 1, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemMilk" unique_id=1522978044]
+[node name="Icon" type="TextureRect" parent="Visible/ItemsTray/ItemCup" unique_id=206381898]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,66 +245,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.85, 0.85, 1, 1)
+texture = ExtResource("6_m0kra")
 
-[node name="Label" type="Label" parent="Visible/ItemsTray/ItemMilk" unique_id=1109340673]
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemCup" unique_id=1435146769]
+visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_font_sizes/font_size = 6
-text = "Milk"
+text = "Copo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemSugar" type="Control" parent="Visible/ItemsTray" unique_id=1437195596]
+[node name="ItemWater" type="Control" parent="Visible/ItemsTray" unique_id=1437195596]
 anchors_preset = 0
 offset_left = 32.0
+offset_top = 6.0
 offset_right = 58.0
-offset_bottom = 20.0
+offset_bottom = 26.0
 script = ExtResource("4_dragitem")
-item_id = &"sugar"
-display_name = "Sugar"
-color = Color(0.98, 0.98, 0.95, 1)
+item_id = &"water"
+display_name = "Water"
 
-[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemSugar" unique_id=1249135307]
-layout_mode = 0
+[node name="Icon" type="TextureRect" parent="Visible/ItemsTray/ItemWater" unique_id=1249135307]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-color = Color(0.98, 0.98, 0.95, 1)
+texture = ExtResource("8_water")
 
-[node name="Label" type="Label" parent="Visible/ItemsTray/ItemSugar" unique_id=655697114]
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemWater" unique_id=655697114]
+visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_font_sizes/font_size = 6
-text = "Sugar"
+text = "Water"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemCoffee" type="Control" parent="Visible/ItemsTray" unique_id=1813033761]
+[node name="ItemFilter" type="Control" parent="Visible/ItemsTray" unique_id=1813033761]
 anchors_preset = 0
-offset_left = 64.0
-offset_right = 90.0
-offset_bottom = 20.0
+offset_left = 65.0
+offset_top = 6.0
+offset_right = 91.0
+offset_bottom = 26.0
 script = ExtResource("4_dragitem")
-item_id = &"coffee"
-display_name = "Coffee"
-color = Color(0.35, 0.2, 0.08, 1)
+item_id = &"filter"
+display_name = "Filter"
 
-[node name="ColorRect" type="ColorRect" parent="Visible/ItemsTray/ItemCoffee" unique_id=1523980445]
-layout_mode = 0
+[node name="Icon" type="TextureRect" parent="Visible/ItemsTray/ItemFilter" unique_id=1523980445]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-color = Color(0.35, 0.2, 0.08, 1)
+texture = ExtResource("7_filter")
 
-[node name="Label" type="Label" parent="Visible/ItemsTray/ItemCoffee" unique_id=2131367998]
+[node name="Label" type="Label" parent="Visible/ItemsTray/ItemFilter" unique_id=2131367998]
+visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_font_sizes/font_size = 6
-text = "Coffee"
+text = "filter"
 horizontal_alignment = 1
 vertical_alignment = 1
 

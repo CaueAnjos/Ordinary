@@ -6,7 +6,7 @@ class_name CoffeeMinigame
 const MAX_MISTAKES := 1
 
 @onready var drag_layer: Control = $DragLayer
-@onready var drop_zone: DropZone = $Visible/DropZone
+@onready var drop_zone: DropZone = $Visible/CoffeMaker/DropZone
 @onready var items_tray: Control = $Visible/ItemsTray
 
 var _mistakes := 0
