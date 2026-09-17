@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://c1p34jq5j30ba"]
 
 [ext_resource type="Script" uid="uid://dgjysiddf45n5" path="res://scripts/game_over_ui.gd" id="1_fdnlv"]
-[ext_resource type="LabelSettings" uid="uid://cu74int3p117i" path="res://assets/text/titles.tres" id="2_r0mit"]
 [ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_rb3af"]
+[ext_resource type="LabelSettings" uid="uid://bxoqirgwmgy5h" path="res://assets/text/gameover_title.tres" id="3_dhe8n"]
 [ext_resource type="FontFile" uid="uid://duwiad336pkxp" path="res://assets/text/fonts/8bitoperatorregular.ttf" id="3_kpfqm"]
+[ext_resource type="Texture2D" uid="uid://c153k3aoc8yle" path="res://assets/game_over.png" id="5_dhe8n"]
+[ext_resource type="Material" uid="uid://fxd645j251q6" path="res://assets/style/blurry_bg.tres" id="5_noyvl"]
+[ext_resource type="StyleBox" uid="uid://6hfir1jk58ta" path="res://assets/style/buttom_without_bg.tres" id="6_7h4hl"]
 
 [sub_resource type="Animation" id="Animation_r0mit"]
 resource_name = "GameOver_fadein"
@@ -96,67 +99,140 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
 
-[node name="Game Over" type="Label" parent="VisibleElements" unique_id=1184402022]
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -87.0
-offset_top = 12.0
-offset_right = 87.0
-offset_bottom = 57.0
-grow_horizontal = 2
-text = "Game Over"
-label_settings = ExtResource("2_r0mit")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Tip" type="Label" parent="VisibleElements" unique_id=613706631]
-layout_mode = 0
+[node name="Label" type="Label" parent="VisibleElements" unique_id=389174093]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.5
-offset_top = -17.5
-offset_right = 80.5
-offset_bottom = 17.5
+offset_left = -20.0
+offset_top = -38.0
+offset_right = 20.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Você Tentou descançar?
-Explore o mapa"
+text = "Você tentou descnaçar?"
 label_settings = ExtResource("2_rb3af")
+
+[node name="Game Over" type="Label" parent="VisibleElements" unique_id=1184402022]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_right = 108.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = ExtResource("3_dhe8n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="VisibleElements" unique_id=2030859677]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_dhe8n")
+
 [node name="ColorRect" type="ColorRect" parent="VisibleElements" unique_id=1316599996]
 z_index = -1
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MenuButton" type="Button" parent="VisibleElements" unique_id=457908873]
-layout_mode = 0
+[node name="PlayButton" type="Control" parent="VisibleElements" unique_id=2083052989]
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -44.0
-offset_right = 63.0
-offset_bottom = -20.0
+offset_left = -60.0
+offset_top = -23.0
+offset_right = 60.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="VisibleElements/PlayButton" unique_id=466872251]
+material = ExtResource("5_noyvl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="Button" parent="VisibleElements/PlayButton" unique_id=457908873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.78431374, 0.43529412, 0.5176471, 1)
 theme_override_colors/font_pressed_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
 theme_override_colors/font_hover_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
 theme_override_fonts/font = ExtResource("3_kpfqm")
 theme_override_font_sizes/font_size = 10
-text = "Menu Principal"
+theme_override_styles/normal = ExtResource("6_7h4hl")
+theme_override_styles/pressed = ExtResource("6_7h4hl")
+theme_override_styles/hover = ExtResource("6_7h4hl")
+theme_override_styles/disabled = ExtResource("6_7h4hl")
+theme_override_styles/focus = ExtResource("6_7h4hl")
+text = "Tentar Novamente"
+
+[node name="TipBox" type="Control" parent="VisibleElements" unique_id=133238721]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -41.0
+offset_right = 57.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="VisibleElements/TipBox" unique_id=603986814]
+material = ExtResource("5_noyvl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Tip" type="Label" parent="VisibleElements/TipBox" unique_id=613706631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -12.5
+offset_right = 57.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Explore o mapa"
+label_settings = ExtResource("2_rb3af")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=413122470]
 libraries/ = SubResource("AnimationLibrary_kpfqm")
 
-[connection signal="pressed" from="VisibleElements/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VisibleElements/PlayButton/MenuButton" to="." method="_on_menu_button_pressed"]

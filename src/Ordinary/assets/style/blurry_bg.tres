@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fxd645j251q6"]
+
+[ext_resource type="Shader" uid="uid://dkwv8tvle1hi2" path="res://assets/style/blurry_bg.gdshader" id="1_v13ni"]
+
+[resource]
+shader = ExtResource("1_v13ni")
+shader_parameter/blur_amount = 8.0
