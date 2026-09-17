@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://35yfyacpwm2c" path="res://Dialogues/balloon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_hfvdi"]
+[ext_resource type="FontFile" uid="uid://c80qfcuwhjx8c" path="res://assets/text/fonts/Dedicool.ttf" id="2_l4n3q"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_1j1j0"]
+[ext_resource type="StyleBox" uid="uid://bdhgj70crp70w" path="res://Dialogues/ballon_text_box.tres" id="4_385qc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
@@ -154,6 +156,11 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_l4n3q")
+theme_override_fonts/bold_font = ExtResource("2_l4n3q")
+theme_override_fonts/bold_italics_font = ExtResource("2_l4n3q")
+theme_override_fonts/italics_font = ExtResource("2_l4n3q")
+theme_override_fonts/mono_font = ExtResource("2_l4n3q")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -163,6 +170,12 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_l4n3q")
+theme_override_fonts/bold_font = ExtResource("2_l4n3q")
+theme_override_fonts/bold_italics_font = ExtResource("2_l4n3q")
+theme_override_fonts/italics_font = ExtResource("2_l4n3q")
+theme_override_fonts/mono_font = ExtResource("2_l4n3q")
+theme_override_styles/normal = ExtResource("4_385qc")
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=351729490]
@@ -196,6 +209,7 @@ script = ExtResource("3_1j1j0")
 
 [node name="ResponseExample" type="Button" parent="Balloon/CenterContainer/ResponsesMenu" unique_id=1555320070]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l4n3q")
 text = "Response Example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=963979321]

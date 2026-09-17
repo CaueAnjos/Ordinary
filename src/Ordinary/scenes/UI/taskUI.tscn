@@ -3,14 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://dwmm7knfnd1va" path="res://assets/checkbox-checked-svgrepo-com.svg" id="1_j7vpv"]
 [ext_resource type="Script" uid="uid://dj0vrtxmli8ny" path="res://scripts/task_ui.gd" id="1_l44x1"]
 [ext_resource type="Texture2D" uid="uid://b0g1bnymphfmn" path="res://assets/checkbox-svgrepo-com.svg" id="2_l44x1"]
-[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="4_1l162"]
+[ext_resource type="LabelSettings" uid="uid://bp3x5vvtoesy2" path="res://assets/text/tiny.tres" id="4_1l162"]
 
 [node name="TaskItem" type="Control" unique_id=327646638]
-custom_minimum_size = Vector2(300, 60)
+custom_minimum_size = Vector2(120, 20)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 300.0
-offset_bottom = 60.0
+offset_right = 191.0
+offset_bottom = 30.0
 script = ExtResource("1_l44x1")
 checked_texture = ExtResource("1_j7vpv")
 unchecked_texture = ExtResource("2_l44x1")
@@ -19,17 +19,19 @@ unchecked_texture = ExtResource("2_l44x1")
 layout_mode = 1
 anchors_preset = -1
 offset_left = 12.0
-offset_right = 106.0
+offset_top = 3.0
+offset_right = 175.0
 offset_bottom = 16.0
 text = "this is a task"
 label_settings = ExtResource("4_1l162")
+vertical_alignment = 1
 
 [node name="Checkbox" type="TextureRect" parent="." unique_id=2019017603]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 11.0
-offset_bottom = 14.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 13.0
 texture = ExtResource("2_l44x1")
 expand_mode = 1

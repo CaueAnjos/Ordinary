@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ddm50uuyhqyae"]
+
+[ext_resource type="PackedScene" uid="uid://bobk8u6loank1" path="res://scenes/UI/interaction_icon.tscn" id="1_0jeyp"]
+[ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="2_cg4gw"]
+[ext_resource type="StyleBox" uid="uid://bx0tuicwk5g0y" path="res://assets/style/exhaustion_bar_full.tres" id="3_xh8q5"]
+[ext_resource type="Script" uid="uid://3anjjdxvfjvx" path="res://scripts/exhaustion_bar.gd" id="4_h03ao"]
+[ext_resource type="PackedScene" uid="uid://05ow7qv2fcjn" path="res://scenes/UI/timer.tscn" id="5_7wvwv"]
+
+[node name="HUD" type="Control" unique_id=648338132]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionIcon" parent="." unique_id=673012942 instance=ExtResource("1_0jeyp")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -31.0
+offset_right = 6.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="TasksList" parent="." unique_id=1070871434 instance=ExtResource("2_cg4gw")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 6.0
+offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=347652129]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 9.0
+offset_right = 310.0
+offset_bottom = 61.0
+theme_override_styles/fill = ExtResource("3_xh8q5")
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("4_h03ao")
+fill_good = Color(0.4392157, 0.68235296, 0, 1)
+fill_bad = Color(1, 0.3882353, 0.32156864, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" parent="." unique_id=32914538 instance=ExtResource("5_7wvwv")]
+visible = false
+layout_mode = 0
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true

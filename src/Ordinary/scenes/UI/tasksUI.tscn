@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://ianp3cg0np3w"]
 
 [ext_resource type="Script" uid="uid://ckinnv8jepm0j" path="res://scripts/tasks_ui.gd" id="1_7p0h3"]
-[ext_resource type="LabelSettings" uid="uid://cu74int3p117i" path="res://assets/text/titles.tres" id="2_mbxcx"]
+[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_mbxcx"]
 
 [node name="TasksList" type="Control" unique_id=1070871434 node_paths=PackedStringArray("tasks_container")]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.328
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1.0399933
+offset_bottom = 1.0
 script = ExtResource("1_7p0h3")
 tasks_container = NodePath("TasksContainer")
 
@@ -23,4 +28,4 @@ layout_mode = 0
 offset_left = 5.0
 offset_top = 26.0
 offset_right = 81.0
-offset_bottom = 123.0
+offset_bottom = 179.0

@@ -16,6 +16,10 @@ signal complete_task(task_id: String)
 
 var _intercations_count := 0
 
+func _apply_exhaustion():
+	GameState.exhaustion_level += exhaustion_cost
+
+
 func _on_interactable_interacted(player: Player) -> void:
 	if not is_repetable and _intercations_count > 0:
 		$InteractionZone.process_mode = Node.PROCESS_MODE_DISABLED
@@ -29,12 +33,16 @@ func _on_interactable_interacted(player: Player) -> void:
 	
 	if minigame:
 		var game = GameManager.start_minigame(minigame)
-		game.failed.connect(func(): 
-			GameState.exhaustion_level -= exhaustion_cost
+		game.failed.connect(func():
+			player.enable_input(true)
+			complete_task.emit(task_id) 
 			)
-		
-	player.enable_input(true)
-	
-	GameState.exhaustion_level += exhaustion_cost
-	
-	complete_task.emit(task_id)
+		game.succeded.connect(func():
+			_apply_exhaustion()
+			player.enable_input(true)
+			complete_task.emit(task_id)
+			)
+	else:
+		_apply_exhaustion()
+		player.enable_input(true)
+		complete_task.emit(task_id)

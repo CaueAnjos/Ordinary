@@ -22,6 +22,11 @@ const BUTTON_SIZE := 12
 const BUTTON_GAP := 2
 const FOLLOW_SMOOTHING := 22.0
 
+## Same font/size as the shared "tiny" LabelSettings (assets/text/tiny.tres),
+## reused here so letter tiles match that style.
+const TILE_FONT := preload("res://assets/text/fonts/Dedicool.ttf")
+const TILE_FONT_SIZE := 8
+
 ## Assigned by the minigame at start() so the tile knows where to render
 ## itself while dragged and who to ask when it's dropped.
 var drag_layer: Control
@@ -83,7 +88,8 @@ func _relayout() -> void:
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_override("font", TILE_FONT)
+		lbl.add_theme_font_size_override("font_size", TILE_FONT_SIZE)
 		lbl.add_theme_color_override("font_color", Color(0.2, 0.15, 0.1))
 		lbl.size = Vector2(CELL_SIZE, CELL_SIZE)
 		lbl.position = Vector2(0, i * CELL_SIZE) if is_vertical else Vector2(i * CELL_SIZE, 0)
