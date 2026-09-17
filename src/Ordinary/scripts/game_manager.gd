@@ -10,15 +10,31 @@ var reason := Reason.EXHAUSTION
 
 const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
 
+var player: Player
+
 func _ready() -> void:
 	GameState.exhaustion_reaches_max.connect(game_over)
 	GameState.completed_all_tasks.connect(game_win)
+	
+	player = get_tree().get_first_node_in_group("Player")
+
+
+func add_ui(ui_scene: PackedScene) -> Node:
+	var ui = ui_scene.instantiate()
+	ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().current_scene.get_node("UI").add_child(ui)
+	return ui
+	
+func remove_ui(ui: Node) -> void:
+	get_tree().current_scene.get_node("UI").remove_child(ui)
+	ui.queue_free()
+	
+func hide_HUD(hide: bool) -> void:
+	get_tree().current_scene.get_node("UI").get_node("HUD").visible = not hide
 
 func game_over() -> void:
 	is_game_over = true
-	var game_over_screen = GAME_OVER_SCENE.instantiate()
-	game_over_screen.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	get_tree().current_scene.get_node("UI").add_child(game_over_screen)
+	var game_over_screen = add_ui(GAME_OVER_SCENE)
 	get_tree().paused = true
 	
 	
@@ -34,22 +50,16 @@ func restart_game() -> void:
 
 func start_minigame(game_scene: PackedScene) -> MinigameBase:
 	get_tree().paused = true
-	var game = game_scene.instantiate()
+	var game = add_ui(game_scene)
+	hide_HUD(true)
 	if game is MinigameBase:
-		# Set this before add_child() so the whole subtree (and its _ready()
-		# calls, e.g. the intro animation) is never left racing the pause
-		# state - it should always be able to process/receive input.
-		game.process_mode = Node.PROCESS_MODE_ALWAYS
-		get_tree().current_scene.get_node("UI").add_child(game)
-		get_tree().current_scene.get_node("UI").get_node("HUD").hide()
-		# game.start() is already called by MinigameBase._ready() once the
-		# intro animation finishes - don't call it again here.
 		game.end.connect(func(): 
-			get_tree().current_scene.get_node("UI").remove_child(game)
-			game.queue_free()
-			get_tree().current_scene.get_node("UI").get_node("HUD").show()
+			remove_ui(game)
+			hide_HUD(false)
 			get_tree().paused = false
 			)
 	else:
+		remove_ui(game)
+		hide_HUD(false)
 		print("minigame should be a MinigameBase")
 	return game

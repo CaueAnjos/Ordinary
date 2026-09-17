@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ccmtjg4uuo7i6"]
+
+[sub_resource type="Animation" id="Animation_chmj8"]
+resource_name = "BossDialog_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox/Dialog:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_ckeol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox/Dialog:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pktuo"]
+_data = {
+&"BossDialog_1": SubResource("Animation_chmj8"),
+&"RESET": SubResource("Animation_ckeol")
+}
+
+[node name="BossDialog" type="Control" unique_id=716884658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogBox" type="ColorRect" parent="." unique_id=1769658071]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -51.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.16924527, 0.1692453, 0.16924521, 1)
+
+[node name="Dialog" type="RichTextLabel" parent="DialogBox" unique_id=1065111939]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -22.5
+offset_right = 145.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1.72, 0)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=620732939]
+libraries/ = SubResource("AnimationLibrary_pktuo")

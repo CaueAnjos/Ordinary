@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dh7qlq6bn0l80"]
 
-[ext_resource type="Texture2D" uid="uid://cyq8unobqx4v8" path="res://assets/Boss/Boss_SpriteSheet.png" id="1_63rv0"]
+[ext_resource type="Texture2D" uid="uid://dpl7ncpt1vb2i" path="res://assets/Boss/boss_spritesheet.png" id="1_63rv0"]
+[ext_resource type="Script" uid="uid://b6f1u30fv5bso" path="res://scripts/boss_talking.gd" id="1_abkvx"]
+[ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="3_8n52u"]
 
 [sub_resource type="Animation" id="Animation_53wks"]
 resource_name = "BossTalking"
@@ -42,11 +44,16 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gkr"]
-size = Vector2(15, 29)
+size = Vector2(22, 51.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abkvx"]
+radius = 46.010868
 
 [node name="BossTalking" type="StaticBody2D" unique_id=1287487677]
+script = ExtResource("1_abkvx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=421138059]
+position = Vector2(0, -27)
 texture = ExtResource("1_63rv0")
 hframes = 3
 
@@ -55,5 +62,18 @@ libraries/ = SubResource("AnimationLibrary_8n52u")
 speed_scale = 9.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347901421]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0, -26.25)
 shape = SubResource("RectangleShape2D_h4gkr")
+
+[node name="Interactable" type="Node" parent="." unique_id=1557160810 node_paths=PackedStringArray("interactable_area")]
+script = ExtResource("3_8n52u")
+interactable_area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://d18tdseuxi7lt"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1731904655]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1217752432]
+position = Vector2(0, -26)
+shape = SubResource("CircleShape2D_abkvx")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
