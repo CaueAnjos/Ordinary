@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dh7qlq6bn0l80"]
 
-[ext_resource type="Texture2D" uid="uid://dpl7ncpt1vb2i" path="res://assets/Boss/boss_spritesheet.png" id="1_63rv0"]
 [ext_resource type="Script" uid="uid://b6f1u30fv5bso" path="res://scripts/boss_talking.gd" id="1_abkvx"]
 [ext_resource type="Resource" uid="uid://8s4w7enbrtsk" path="res://Dialogues/BossGiveTasks.dialogue" id="2_8n52u"]
+[ext_resource type="Texture2D" uid="uid://6sin1n4s2eyq" path="res://assets/Boss/smallboss_spritesheet.png" id="3_2avjw"]
 [ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="3_8n52u"]
 
 [sub_resource type="Animation" id="Animation_53wks"]
@@ -45,7 +45,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gkr"]
-size = Vector2(22, 18.5)
+size = Vector2(10, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abkvx"]
 radius = 46.010868
@@ -58,7 +58,7 @@ give_tasks_dialogue = ExtResource("2_8n52u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=421138059]
 position = Vector2(0, -11)
-texture = ExtResource("1_63rv0")
+texture = ExtResource("3_2avjw")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155474515]
@@ -66,7 +66,7 @@ libraries/ = SubResource("AnimationLibrary_8n52u")
 speed_scale = 9.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347901421]
-position = Vector2(0, 6.25)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_h4gkr")
 
 [node name="Interactable" type="Node" parent="." unique_id=1557160810 node_paths=PackedStringArray("interactable_area")]

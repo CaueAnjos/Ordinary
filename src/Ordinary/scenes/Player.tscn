@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1h8ctuv6ox3a"]
 
 [ext_resource type="Script" uid="uid://def67ta4mv6df" path="res://scripts/player.gd" id="1_v6fml"]
-[ext_resource type="Texture2D" uid="uid://cuta8qvh0u7b5" path="res://assets/Player/player_spritesheet.png" id="2_v6fml"]
+[ext_resource type="Texture2D" uid="uid://dicqt88shpcln" path="res://assets/Player/smallplayer_spritesheet.png" id="2_v6fml"]
 
 [sub_resource type="Animation" id="Animation_cw2d6"]
 resource_name = "PlayerIdle_down"
@@ -175,7 +175,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
-size = Vector2(16, 14.5)
+size = Vector2(14, 13.25)
 
 [node name="Player" type="CharacterBody2D" unique_id=26199935 groups=["Player"]]
 script = ExtResource("1_v6fml")
@@ -191,5 +191,5 @@ libraries/ = SubResource("AnimationLibrary_mdl7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=139969333]
 z_index = 5
-position = Vector2(0, 16.25)
+position = Vector2(-1, 0.625)
 shape = SubResource("RectangleShape2D_5q5h1")
