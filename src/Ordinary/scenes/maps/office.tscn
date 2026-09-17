@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cfdkj8mrx6pmb"]
+
+[ext_resource type="TileSet" uid="uid://ck1mob8femfha" path="res://assets/TileSet/office_tileset.tres" id="1_g1mfe"]
+
+[node name="TileMapLayer" type="Node2D" unique_id=1134179288]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2073997909]
+tile_set = ExtResource("1_g1mfe")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=163793262]
+tile_set = ExtResource("1_g1mfe")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=679304943]
+tile_set = ExtResource("1_g1mfe")
