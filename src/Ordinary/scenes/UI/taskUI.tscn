@@ -14,6 +14,7 @@ offset_bottom = 30.0
 script = ExtResource("1_l44x1")
 checked_texture = ExtResource("1_j7vpv")
 unchecked_texture = ExtResource("2_l44x1")
+pending_text_color = Color(0.038397416, 0.038397077, 0.038397152, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1480108654]
 layout_mode = 1

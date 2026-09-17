@@ -2,74 +2,65 @@
 
 [ext_resource type="PackedScene" uid="uid://bobk8u6loank1" path="res://scenes/UI/interaction_icon.tscn" id="1_0jeyp"]
 [ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="2_cg4gw"]
+[ext_resource type="Texture2D" uid="uid://j6k1tdg473wn" path="res://assets/PostIT_v2.png" id="2_xh8q5"]
+[ext_resource type="Script" uid="uid://drmuml7wdh3vs" path="res://scripts/tasks_button.gd" id="3_h03ao"]
 [ext_resource type="StyleBox" uid="uid://bx0tuicwk5g0y" path="res://assets/style/exhaustion_bar_full.tres" id="3_xh8q5"]
 [ext_resource type="Script" uid="uid://3anjjdxvfjvx" path="res://scripts/exhaustion_bar.gd" id="4_h03ao"]
 [ext_resource type="PackedScene" uid="uid://05ow7qv2fcjn" path="res://scenes/UI/timer.tscn" id="5_7wvwv"]
-[ext_resource type="FontFile" uid="uid://duwiad336pkxp" path="res://assets/text/fonts/8bitoperatorregular.ttf" id="6_font8bit"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tasksbtn_normal"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.345098, 0.345098, 0.345098, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="Animation" id="Animation_h03ao"]
+resource_name = "EndHoverPostIt"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TasksButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tasksbtn_pressed"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0.227451, 0.227451, 0.227451, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="Animation" id="Animation_cg4gw"]
+resource_name = "HoverPostIt"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TasksButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.2191422, 2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tasksbtn_hover"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="Animation" id="Animation_xh8q5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TasksButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tasksbtn_focus"]
-content_margin_left = 6.0
-content_margin_top = 2.0
-content_margin_right = 6.0
-content_margin_bottom = 2.0
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh8q5"]
+_data = {
+&"EndHoverPostIt": SubResource("Animation_h03ao"),
+&"HoverPostIt": SubResource("Animation_cg4gw"),
+&"RESET": SubResource("Animation_xh8q5")
+}
 
 [node name="HUD" type="Control" unique_id=648338132]
 layout_mode = 3
@@ -94,22 +85,17 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="TasksButton" type="Button" parent="." unique_id=1281044559]
-layout_mode = 0
+[node name="TasksButton" type="TextureButton" parent="." unique_id=419355291]
+layout_mode = 1
+anchors_preset = -1
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 46.0
-offset_bottom = 16.0
-theme_override_colors/font_color = Color(0.9215686, 0.9215686, 0.9215686, 1)
-theme_override_colors/font_pressed_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
-theme_override_colors/font_hover_color = Color(0.5686275, 0.72156864, 0.08627451, 1)
-theme_override_fonts/font = ExtResource("6_font8bit")
-theme_override_font_sizes/font_size = 10
-theme_override_styles/normal = SubResource("StyleBoxFlat_tasksbtn_normal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tasksbtn_pressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tasksbtn_hover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_tasksbtn_focus")
-text = "Tarefas"
+offset_right = 84.0
+offset_bottom = 73.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_xh8q5")
+ignore_texture_size = true
+script = ExtResource("3_h03ao")
 metadata/_edit_use_anchors_ = true
 
 [node name="TasksList" parent="." unique_id=1070871434 instance=ExtResource("2_cg4gw")]
@@ -140,4 +126,8 @@ offset_right = 292.0
 offset_bottom = 24.0
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=368894832]
+libraries/ = SubResource("AnimationLibrary_xh8q5")
+
+[connection signal="mouse_entered" from="TasksButton" to="InteractionIcon" method="_on_tasks_button_mouse_entered"]
 [connection signal="pressed" from="TasksButton" to="TasksList" method="toggle"]

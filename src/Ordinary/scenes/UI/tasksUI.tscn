@@ -1,25 +1,47 @@
-[gd_scene load_steps=8 format=3 uid="uid://ianp3cg0np3w"]
+[gd_scene format=3 uid="uid://ianp3cg0np3w"]
 
 [ext_resource type="Script" uid="uid://ckinnv8jepm0j" path="res://scripts/tasks_ui.gd" id="1_7p0h3"]
-[ext_resource type="LabelSettings" uid="uid://pl7m1yhcveyi" path="res://assets/text/default.tres" id="2_mbxcx"]
+[ext_resource type="Texture2D" uid="uid://cms7kcn5nsoi" path="res://assets/PostIT.png" id="2_1xehf"]
+[ext_resource type="LabelSettings" uid="uid://b00worgqifpxh" path="res://assets/text/tasks_title.tres" id="3_1xehf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taskpanel"]
-bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.345098, 0.345098, 0.345098, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0, 0, 0, 0.5)
-shadow_size = 4
-content_margin_left = 8.0
-content_margin_top = 6.0
-content_margin_right = 8.0
-content_margin_bottom = 6.0
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_popup_open"]
 resource_name = "popup_open"
@@ -61,45 +83,6 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_reset"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cover:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.8, 0.8)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_popup"]
 _data = {
 &"RESET": SubResource("Animation_reset"),
@@ -117,7 +100,7 @@ mouse_filter = 2
 script = ExtResource("1_7p0h3")
 tasks_container = NodePath("Panel/VBoxContainer/ScrollContainer/TasksContainer")
 
-[node name="Cover" type="ColorRect" parent="."]
+[node name="Cover" type="ColorRect" parent="." unique_id=838505930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +110,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="TextureRect" parent="." unique_id=1294380360]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,36 +124,40 @@ offset_right = 80.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(80, 70)
 scale = Vector2(0.8, 0.8)
-modulate = Color(1, 1, 1, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_taskpanel")
+pivot_offset = Vector2(80, 70)
+texture = ExtResource("2_1xehf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1955406170]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 145.0
+offset_bottom = 134.0
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=909728746]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Tarefas"
-label_settings = ExtResource("2_mbxcx")
+label_settings = ExtResource("3_1xehf")
 horizontal_alignment = 1
 
-[node name="Divider" type="ColorRect" parent="Panel/VBoxContainer"]
+[node name="Divider" type="ColorRect" parent="Panel/VBoxContainer" unique_id=1279848893]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(0.5686275, 0.72156864, 0.08627451, 0.6)
+color = Color(0, 0, 0, 0.6)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer" unique_id=433759892]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="TasksContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+[node name="TasksContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer" unique_id=2019781368]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=342815898]
 libraries/ = SubResource("AnimationLibrary_popup")
