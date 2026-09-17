@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://c0iseyo1txgy"]
+
+[ext_resource type="FontFile" uid="uid://duwiad336pkxp" path="res://assets/text/fonts/8bitoperatorregular.ttf" id="1_wbs0q"]
+
+[resource]
+font = ExtResource("1_wbs0q")
+font_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
