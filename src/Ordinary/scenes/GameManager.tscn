@@ -4,4 +4,5 @@
 
 [node name="MyGameManager" type="Node" unique_id=1890359083]
 script = ExtResource("1_fxwef")
+max_game_duration = 20
 metadata/_custom_type_script = "uid://bil6le7pn73q"

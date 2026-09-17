@@ -1,6 +1,13 @@
 extends Node
 class_name MyGameManager
 
+@export var max_game_duration := 300
+
+var is_game_over := false
+
+enum Reason { TIMEOUT, EXHAUSTION }
+var reason := Reason.EXHAUSTION
+
 const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
 
 func _ready() -> void:
@@ -8,6 +15,7 @@ func _ready() -> void:
 	GameState.completed_all_tasks.connect(game_win)
 
 func game_over() -> void:
+	is_game_over = true
 	var game_over_screen = GAME_OVER_SCENE.instantiate()
 	game_over_screen.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_tree().current_scene.get_node("UI").add_child(game_over_screen)
@@ -21,6 +29,7 @@ func restart_game() -> void:
 	get_tree().reload_current_scene()
 	get_tree().paused = false
 	GameState.restart_game_state()
+	is_game_over = false
 
 
 func start_minigame(game_scene: PackedScene) -> MinigameBase:

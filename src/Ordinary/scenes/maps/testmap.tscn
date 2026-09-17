@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="4_mgwiw"]
 [ext_resource type="StyleBox" uid="uid://bx0tuicwk5g0y" path="res://assets/style/exhaustion_bar_full.tres" id="5_2nkbr"]
 [ext_resource type="Script" uid="uid://3anjjdxvfjvx" path="res://scripts/exhaustion_bar.gd" id="6_ytmpc"]
+[ext_resource type="PackedScene" uid="uid://05ow7qv2fcjn" path="res://scenes/UI/timer.tscn" id="7_abnps"]
 [ext_resource type="PackedScene" uid="uid://b6qkiot3skyeo" path="res://scenes/Tasks/CoffeTask.tscn" id="7_o7ia3"]
 [ext_resource type="PackedScene" uid="uid://c8des1gg3w7yk" path="res://scenes/Tasks/JournalTask.tscn" id="8_n6foo"]
 
@@ -69,6 +70,13 @@ show_percentage = false
 script = ExtResource("6_ytmpc")
 fill_good = Color(0.4392157, 0.68235296, 0, 1)
 fill_bad = Color(1, 0.3882353, 0.32156864, 1)
+
+[node name="Timer" parent="UI/HUD" unique_id=32914538 instance=ExtResource("7_abnps")]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 24.0
 
 [node name="FishTank" parent="." unique_id=1522172788 instance=ExtResource("4_mgwiw")]
 position = Vector2(245, 291)
