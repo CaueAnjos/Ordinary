@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8kkp3oe02n1g" path="res://scenes/tasks_container.tscn" id="8_wgv6b"]
 
 [node name="Map" type="Node2D" unique_id=317377056]
+y_sort_enabled = true
 
 [node name="TasksContainer" parent="." unique_id=1646369258 instance=ExtResource("8_wgv6b")]
 extra_tasks = Dictionary[String, String]({
