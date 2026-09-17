@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c80qfcuwhjx8c" path="res://assets/text/fonts/Dedicool.ttf" id="2_l4n3q"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_1j1j0"]
 [ext_resource type="StyleBox" uid="uid://bdhgj70crp70w" path="res://Dialogues/ballon_text_box.tres" id="4_385qc"]
+[ext_resource type="AudioStream" uid="uid://bbrgtkav8b1tf" path="res://Dialogues/DigitalText2.wav" id="6_taq3p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
@@ -214,6 +215,11 @@ text = "Response Example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=963979321]
 unique_name_in_owner = true
+
+[node name="TypingSoundPlayer" type="AudioStreamPlayer" parent="." unique_id=963979322]
+unique_name_in_owner = true
+stream = ExtResource("6_taq3p")
+volume_db = -6.0
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

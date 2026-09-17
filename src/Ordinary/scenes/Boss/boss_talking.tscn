@@ -45,17 +45,19 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gkr"]
-size = Vector2(22, 51.5)
+size = Vector2(22, 18.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abkvx"]
 radius = 46.010868
 
 [node name="BossTalking" type="StaticBody2D" unique_id=1287487677]
+z_index = 5
+y_sort_enabled = true
 script = ExtResource("1_abkvx")
 give_tasks_dialogue = ExtResource("2_8n52u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=421138059]
-position = Vector2(0, -27)
+position = Vector2(0, -11)
 texture = ExtResource("1_63rv0")
 hframes = 3
 
@@ -64,7 +66,7 @@ libraries/ = SubResource("AnimationLibrary_8n52u")
 speed_scale = 9.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347901421]
-position = Vector2(0, -26.25)
+position = Vector2(0, 6.25)
 shape = SubResource("RectangleShape2D_h4gkr")
 
 [node name="Interactable" type="Node" parent="." unique_id=1557160810 node_paths=PackedStringArray("interactable_area")]
@@ -73,6 +75,7 @@ interactable_area = NodePath("../Area2D")
 metadata/_custom_type_script = "uid://d18tdseuxi7lt"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1731904655]
+position = Vector2(0, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1217752432]
 position = Vector2(0, -26)

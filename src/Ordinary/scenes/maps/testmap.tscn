@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dh7qlq6bn0l80" path="res://scenes/Boss/boss_talking.tscn" id="2_c27os"]
 [ext_resource type="PackedScene" uid="uid://dyepwuw7xcahs" path="res://scenes/TaskInteractable.tscn" id="2_fcinl"]
 [ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="4_mgwiw"]
+[ext_resource type="PackedScene" path="res://scenes/DialogueInteractable.tscn" id="6_2nkbr"]
 [ext_resource type="PackedScene" uid="uid://ddm50uuyhqyae" path="res://scenes/UI/hud.tscn" id="7_n6foo"]
 [ext_resource type="PackedScene" uid="uid://b6qkiot3skyeo" path="res://scenes/Tasks/CoffeTask.tscn" id="7_o7ia3"]
 [ext_resource type="PackedScene" uid="uid://c8des1gg3w7yk" path="res://scenes/Tasks/JournalTask.tscn" id="8_n6foo"]
@@ -34,7 +35,13 @@ scale = Vector2(0.3, 0.3)
 [node name="FishTank" parent="TasksContainer" unique_id=1522172788 instance=ExtResource("4_mgwiw")]
 position = Vector2(245, 291)
 scale = Vector2(0.3, 0.3)
-is_repetable = false
+
+[node name="DialogueInteractable" parent="TasksContainer" unique_id=1802381719 instance=ExtResource("6_2nkbr")]
+position = Vector2(102, 362)
+
+[node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]
+position = Vector2(281, 112)
+task_id = "GetTasks"
 
 [node name="Player" parent="." unique_id=26199935 instance=ExtResource("1_j8icx")]
 z_index = 5
@@ -46,7 +53,3 @@ position = Vector2(-2, 1)
 [node name="UI" type="CanvasLayer" parent="." unique_id=876166243]
 
 [node name="HUD" parent="UI" unique_id=648338132 instance=ExtResource("7_n6foo")]
-
-[node name="BossTalking" parent="." unique_id=1145223740 instance=ExtResource("2_c27os")]
-position = Vector2(281, 112)
-task_id = "GetTasks"

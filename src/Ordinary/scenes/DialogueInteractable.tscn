@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" uid="uid://migbaq3mtseq" path="res://scripts/dialogue_interactable.gd" id="1_dlgui"]
+[ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="2_ntrct"]
+[ext_resource type="Texture2D" uid="uid://d12qp7pbvcmu2" path="res://icon.svg" id="3_icon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_area"]
+radius = 48.0
+
+[node name="DialogueInteractable" type="StaticBody2D"]
+script = ExtResource("1_dlgui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("interactable_area")]
+script = ExtResource("2_ntrct")
+interactable_area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://d18tdseuxi7lt"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_area")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

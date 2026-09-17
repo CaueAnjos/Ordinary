@@ -13,12 +13,14 @@ const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
 func _ready() -> void:
 	GameState.exhaustion_reaches_max.connect(game_over)
 	GameState.completed_all_tasks.connect(game_win)
-	
+	DialogueManager.dialogue_started.connect(func(_resource): prepare_for_dialogue_start())
+	DialogueManager.dialogue_ended.connect(func(_resource): prepare_for_dialogue_end())
 
 
 func start_timer() -> void:
 	var timer = get_tree().get_first_node_in_group("Timer")
 	timer.show()
+	timer.is_paused = false
 
 
 func  unhide_all_tasks() -> void:

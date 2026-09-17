@@ -6,12 +6,14 @@ var _minutes := 0
 var _seconds := 0
 var _msecs := 0
 
+var is_paused := true
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _process(delta: float) -> void:
-	if GameManager.is_game_over:
+	if GameManager.is_game_over or is_paused:
 		return
 	
 	_time += delta
@@ -24,4 +26,4 @@ func _process(delta: float) -> void:
 	_minutes = fmod(_time, 3600) /60
 	$Minutes.text = "%02d:" % _minutes
 	$Seconds.text = "%02d:" % _seconds
-	$Msecs.text = "%02d:" % _msecs
+	$Msecs.text = "%02d" % _msecs
