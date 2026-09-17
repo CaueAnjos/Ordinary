@@ -1,11 +1,14 @@
 extends StaticBody2D
 
 
-@export var boss_dialog: PackedScene
+@export var give_tasks_dialogue: DialogueResource
 
+var counts_talking := 0
 
 func _on_interactable_interacted(player: Player) -> void:
-	return
-	GameManager.add_ui(boss_dialog)
-	GameManager.hide_HUD(true)
-	GameManager.player.enable_input(false)
+	var cue := "firstTime"
+	if counts_talking > 0:
+		cue = "anyTime"
+	
+	counts_talking += 1
+	DialogueManager.show_dialogue_balloon(give_tasks_dialogue, cue)

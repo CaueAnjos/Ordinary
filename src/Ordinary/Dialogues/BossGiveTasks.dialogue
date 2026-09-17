@@ -1,0 +1,19 @@
+~ firstTime
+$> GameManager.prepare_for_dialogue_start()
+Chefe: Bom dia, recebeu meu e-mail?
+Chefe: Humm... espero que sim.
+Chefe: Temos muito trabalho hoje, então eu espero que você não perca tempo
+Chefe: Aqui estão suas tarefas.
+Chefe: Logo! Você tem apenas 5 minutos para me entrega-las.
+$> GameManager.prepare_for_dialogue_end()
+=> END
+
+~ anyTime
+$> GameManager.prepare_for_dialogue_start()
+%2 Chefe: Você já terminou?
+% Chefe: Você parce cansado, algum problema?
+% 
+	Chefe: Estou ocupado...
+	Chefre: Vai ficar me olhando?
+$> GameManager.prepare_for_dialogue_end()
+=> END

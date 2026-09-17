@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://8s4w7enbrtsk"
+path="res://.godot/imported/BossGiveTasks.dialogue-d31fb11053ef8180bc9b691edc0edb69.tres"
+
+[deps]
+
+source_file="res://Dialogues/BossGiveTasks.dialogue"
+dest_files=["res://.godot/imported/BossGiveTasks.dialogue-d31fb11053ef8180bc9b691edc0edb69.tres"]
+
+[params]
+
+defaults=true

@@ -10,13 +10,21 @@ var reason := Reason.EXHAUSTION
 
 const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
 
-var player: Player
 
 func _ready() -> void:
 	GameState.exhaustion_reaches_max.connect(game_over)
 	GameState.completed_all_tasks.connect(game_win)
 	
-	player = get_tree().get_first_node_in_group("Player")
+
+
+func prepare_for_dialogue_start() -> void:
+	hide_HUD(true)
+	get_tree().get_first_node_in_group("Player").enable_input(false)
+
+
+func prepare_for_dialogue_end() -> void:
+	hide_HUD(false)
+	get_tree().get_first_node_in_group("Player").enable_input(true)
 
 
 func add_ui(ui_scene: PackedScene) -> Node:
