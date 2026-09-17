@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8kkp3oe02n1g"]
+
+[ext_resource type="Script" uid="uid://cxvtf5w7d183s" path="res://scripts/tasks_container.gd" id="1_7nrck"]
+
+[node name="TasksContainer" type="Node" unique_id=1646369258 groups=["TasksContainer"]]
+script = ExtResource("1_7nrck")

@@ -4,7 +4,9 @@ Chefe: Bom dia, recebeu meu e-mail?
 Chefe: Humm... espero que sim.
 Chefe: Temos muito trabalho hoje, então eu espero que você não perca tempo
 Chefe: Aqui estão suas tarefas.
+$> GameManager.unhide_all_tasks()
 Chefe: Logo! Você tem apenas 5 minutos para me entrega-las.
+$> GameManager.start_timer()
 $> GameManager.prepare_for_dialogue_end()
 => END
 

@@ -10,11 +10,19 @@ var reason := Reason.EXHAUSTION
 
 const GAME_OVER_SCENE = preload("res://scenes/UI/game_overUI.tscn")
 
-
 func _ready() -> void:
 	GameState.exhaustion_reaches_max.connect(game_over)
 	GameState.completed_all_tasks.connect(game_win)
 	
+
+
+func start_timer() -> void:
+	var timer = get_tree().get_first_node_in_group("Timer")
+	timer.show()
+
+
+func  unhide_all_tasks() -> void:
+	get_tree().get_first_node_in_group("TasksContainer").unhide_all_tasks()
 
 
 func prepare_for_dialogue_start() -> void:
