@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://ddm50uuyhqyae"]
 
 [ext_resource type="PackedScene" uid="uid://bobk8u6loank1" path="res://scenes/UI/interaction_icon.tscn" id="1_0jeyp"]
+[ext_resource type="Script" uid="uid://xygufed7fl28" path="res://scripts/interaction_icon.gd" id="1_k00v8"]
 [ext_resource type="PackedScene" uid="uid://ianp3cg0np3w" path="res://scenes/UI/tasksUI.tscn" id="2_cg4gw"]
+[ext_resource type="Texture2D" uid="uid://ck1jllplc7a1b" path="res://assets/interaction_icon.png" id="2_t6axx"]
 [ext_resource type="Texture2D" uid="uid://j6k1tdg473wn" path="res://assets/PostIT_v2.png" id="2_xh8q5"]
 [ext_resource type="Script" uid="uid://drmuml7wdh3vs" path="res://scripts/tasks_button.gd" id="3_h03ao"]
 [ext_resource type="StyleBox" uid="uid://bx0tuicwk5g0y" path="res://assets/style/exhaustion_bar_full.tres" id="3_xh8q5"]
 [ext_resource type="Script" uid="uid://3anjjdxvfjvx" path="res://scripts/exhaustion_bar.gd" id="4_h03ao"]
 [ext_resource type="PackedScene" uid="uid://05ow7qv2fcjn" path="res://scenes/UI/timer.tscn" id="5_7wvwv"]
+[ext_resource type="StyleBox" uid="uid://dej1aibxprg4g" path="res://assets/style/exhaustion_bar.tres" id="5_k00v8"]
+[ext_resource type="Texture2D" uid="uid://cxek3oxw3x0cq" path="res://assets/e.png" id="7_h03ao"]
 
 [sub_resource type="Animation" id="Animation_h03ao"]
 resource_name = "EndHoverPostIt"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +30,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cg4gw"]
 resource_name = "HoverPostIt"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,19 +74,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InteractionIcon" parent="." unique_id=673012942 instance=ExtResource("1_0jeyp")]
+[node name="Interaction" type="Control" parent="." unique_id=1615516544]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -31.0
-offset_right = 6.0
-offset_bottom = -14.0
+offset_left = -14.0
+offset_top = -27.0
+offset_right = 10.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_k00v8")
+
+[node name="TextureRect" type="TextureRect" parent="Interaction" unique_id=1200766983]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t6axx")
+
+[node name="InteractionIcon" parent="Interaction" unique_id=673012942 instance=ExtResource("1_0jeyp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -8.5
+offset_right = 6.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+script = null
 metadata/_edit_use_anchors_ = true
 
 [node name="TasksButton" type="TextureButton" parent="." unique_id=419355291]
@@ -107,6 +143,7 @@ offset_left = 303.0
 offset_top = 9.0
 offset_right = 310.0
 offset_bottom = 61.0
+theme_override_styles/background = ExtResource("5_k00v8")
 theme_override_styles/fill = ExtResource("3_xh8q5")
 max_value = 1.0
 value = 1.0
@@ -117,8 +154,15 @@ fill_good = Color(0.4392157, 0.68235296, 0, 1)
 fill_bad = Color(1, 0.3882353, 0.32156864, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="ProgressBar" unique_id=1734758016]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -4.0
+offset_right = 41.0
+offset_bottom = 60.0
+texture = ExtResource("7_h03ao")
+
 [node name="Timer" parent="." unique_id=32914538 instance=ExtResource("5_7wvwv")]
-visible = false
 layout_mode = 0
 offset_left = 232.0
 offset_top = 8.0
@@ -129,5 +173,5 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=368894832]
 libraries/ = SubResource("AnimationLibrary_xh8q5")
 
-[connection signal="mouse_entered" from="TasksButton" to="InteractionIcon" method="_on_tasks_button_mouse_entered"]
+[connection signal="mouse_entered" from="TasksButton" to="Interaction/InteractionIcon" method="_on_tasks_button_mouse_entered"]
 [connection signal="pressed" from="TasksButton" to="TasksList" method="toggle"]

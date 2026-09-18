@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://wgflqtlpvpsi" path="res://scenes/Tasks/PrintTask.tscn" id="6_vor6v"]
 
 [node name="GameMap" type="Node2D" unique_id=604848848]
+y_sort_enabled = true
 
 [node name="TasksContainer" type="Node" parent="." unique_id=1015104937 groups=["TasksContainer"]]
 script = ExtResource("4_nxbj3")

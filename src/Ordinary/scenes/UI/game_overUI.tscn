@@ -112,7 +112,7 @@ offset_right = 20.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Você tentou descnaçar?"
+text = "Você tentou descançar?"
 label_settings = ExtResource("2_rb3af")
 
 [node name="Game Over" type="Label" parent="VisibleElements" unique_id=1184402022]

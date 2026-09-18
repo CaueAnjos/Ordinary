@@ -29,6 +29,16 @@ func _end_task():
 	
 
 func _on_interactable_interacted(player: Player) -> void:
+	var is_hidden := false
+	
+	var tasks_container = get_tree().get_first_node_in_group("TasksContainer")
+	if tasks_container is TasksContainer:
+		if tasks_container.tasks.has(task_id):
+			is_hidden = tasks_container.tasks[task_id].hidden
+			if is_hidden:
+				return
+		
+	
 	if not is_repetable and _intercations_count > 0:
 		$InteractionZone.process_mode = Node.PROCESS_MODE_DISABLED
 		return

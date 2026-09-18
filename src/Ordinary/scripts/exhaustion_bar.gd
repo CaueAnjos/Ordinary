@@ -8,7 +8,7 @@ extends ProgressBar
 
 
 func calculate(exhaustion_level: int) -> float:
-	var value = float(GameState.exhaustion_max - exhaustion_level) / float(GameState.exhaustion_max)
+	var value = float(exhaustion_level) / float(GameState.exhaustion_max)
 	print(value)
 	return value
 
