@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://biftabiucrl82"
+path="res://.godot/imported/Printer.dialogue-ae50444af08fb9e3e7440f9b3056b27d.tres"
+
+[deps]
+
+source_file="res://Dialogues/Printer.dialogue"
+dest_files=["res://.godot/imported/Printer.dialogue-ae50444af08fb9e3e7440f9b3056b27d.tres"]
+
+[params]
+
+defaults=true

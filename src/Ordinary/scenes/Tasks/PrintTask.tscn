@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://wgflqtlpvpsi"]
+
+[ext_resource type="Script" uid="uid://d11go68um6mpm" path="res://scripts/print_task.gd" id="1_uyug7"]
+[ext_resource type="Texture2D" uid="uid://dttyb4m0goi8f" path="res://assets/TileSet/TileSet_v3.png" id="3_uyug7"]
+[ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="4_i65un"]
+[ext_resource type="AudioStream" uid="uid://1h6fgrxbk2kx" path="res://assets/Sound/freesound_community-printer-printing-office-sounds-31067.mp3" id="4_uyug7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgnd1"]
+size = Vector2(10, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uyug7"]
+radius = 12.165525
+
+[sub_resource type="Animation" id="Animation_mqxam"]
+resource_name = "ExecuteFishTank"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(7.999991, 7.999991, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efa16"]
+resource_name = "ExecuteTask"
+length = 0.5
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(4.756827, 0.34150985, 0.34150985),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -9), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_heoa7"]
+resource_name = "Printed"
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [136]
+}
+
+[sub_resource type="Animation" id="Animation_uyug7"]
+resource_name = "Printing"
+length = 0.7
+loop_mode = 2
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [134, 135, 136]
+}
+
+[sub_resource type="Animation" id="Animation_db2vg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [134]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db2vg"]
+_data = {
+&"ExecuteFishTank": SubResource("Animation_mqxam"),
+&"ExecuteTask": SubResource("Animation_efa16"),
+&"Printed": SubResource("Animation_heoa7"),
+&"Printing": SubResource("Animation_uyug7"),
+&"RESET": SubResource("Animation_db2vg")
+}
+
+[node name="TaskInteractable" type="Node2D" unique_id=1891914535]
+script = ExtResource("1_uyug7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=773538662]
+position = Vector2(-1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=988585211]
+texture = ExtResource("3_uyug7")
+hframes = 22
+vframes = 14
+frame = 134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2038358200]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_mgnd1")
+
+[node name="Interactable" type="Node" parent="." unique_id=891703686 node_paths=PackedStringArray("interactable_area")]
+script = ExtResource("4_i65un")
+interactable_area = NodePath("../InteractionZone")
+metadata/_custom_type_script = "uid://d18tdseuxi7lt"
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=800398414]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=2083447576]
+position = Vector2(5, 1)
+shape = SubResource("CircleShape2D_uyug7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=195210163]
+libraries/ = SubResource("AnimationLibrary_db2vg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1755591667]
+stream = ExtResource("4_uyug7")
+
+[connection signal="ended_task" from="." to="." method="_on_ended_task"]
+[connection signal="started_task" from="." to="." method="_on_started_task"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

@@ -131,9 +131,13 @@ grow_vertical = 2
 
 [node name="Fish" parent="Visible" unique_id=1529468966 instance=ExtResource("2_c7k0n")]
 position = Vector2(160, 150)
+collision_layer = 6
+collision_mask = 2
 
 [node name="Barrier" type="StaticBody2D" parent="Visible" unique_id=249899961]
 rotation = 1.5707964
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visible/Barrier" unique_id=311665147]
 shape = SubResource("WorldBoundaryShape2D_c7k0n")
@@ -141,14 +145,16 @@ shape = SubResource("WorldBoundaryShape2D_c7k0n")
 [node name="Barrier2" type="StaticBody2D" parent="Visible" unique_id=1736042001]
 position = Vector2(320, 0)
 rotation = -1.5707964
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visible/Barrier2" unique_id=1657443470]
 shape = SubResource("WorldBoundaryShape2D_c7k0n")
 
 [node name="Barrier3" type="StaticBody2D" parent="Visible" unique_id=911029611]
 position = Vector2(159, 206)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 6
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visible/Barrier3" unique_id=1804356646]
 shape = SubResource("WorldBoundaryShape2D_c7k0n")
