@@ -10,6 +10,8 @@ radius = 6.000001
 radius = 14.035668
 
 [node name="FishFood" type="RigidBody2D" unique_id=1850049993]
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.2
 script = ExtResource("2_4r01n")
 
@@ -23,8 +25,8 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_h4gkr")
 
 [node name="EatZone" type="Area2D" parent="." unique_id=1282772412]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EatZone" unique_id=524643931]
 shape = SubResource("CircleShape2D_vh6qn")
