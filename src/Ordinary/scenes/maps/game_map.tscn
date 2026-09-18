@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://bg20c1gs088ik"]
 
 [ext_resource type="PackedScene" uid="uid://cfdkj8mrx6pmb" path="res://scenes/maps/office.tscn" id="1_xk227"]
+[ext_resource type="Resource" uid="uid://biftabiucrl82" path="res://Dialogues/Printer.dialogue" id="2_ak6bi"]
 [ext_resource type="PackedScene" uid="uid://d1h8ctuv6ox3a" path="res://scenes/Player.tscn" id="2_wbkha"]
 [ext_resource type="PackedScene" uid="uid://ddm50uuyhqyae" path="res://scenes/UI/hud.tscn" id="3_42plc"]
 [ext_resource type="PackedScene" uid="uid://dh7qlq6bn0l80" path="res://scenes/Boss/boss_talking.tscn" id="4_24bls"]
 [ext_resource type="Script" uid="uid://cxvtf5w7d183s" path="res://scripts/tasks_container.gd" id="4_nxbj3"]
 [ext_resource type="PackedScene" uid="uid://wgflqtlpvpsi" path="res://scenes/Tasks/PrintTask.tscn" id="6_vor6v"]
+[ext_resource type="PackedScene" uid="uid://dsl4kbrust6h1" path="res://scenes/DialogueInteractable.tscn" id="7_hmaig"]
+[ext_resource type="PackedScene" uid="uid://b2lnurokls6ue" path="res://scenes/Tasks/FishTankTask.tscn" id="9_1xy5d"]
 
 [node name="GameMap" type="Node2D" unique_id=604848848]
 y_sort_enabled = true
+
+[node name="Dialogables" type="Node" parent="." unique_id=935190997]
+
+[node name="BrokenPrinter" parent="Dialogables" unique_id=1265805876 instance=ExtResource("7_hmaig")]
+position = Vector2(155, 343)
+dialogue = ExtResource("2_ak6bi")
+start_title = "start"
+
+[node name="BrokenPrinter2" parent="Dialogables" unique_id=1420633698 instance=ExtResource("7_hmaig")]
+position = Vector2(155, 375)
+dialogue = ExtResource("2_ak6bi")
+start_title = "start"
 
 [node name="TasksContainer" type="Node" parent="." unique_id=1015104937 groups=["TasksContainer"]]
 script = ExtResource("4_nxbj3")
@@ -40,3 +55,7 @@ position = Vector2(121, 111)
 [node name="UI" type="CanvasLayer" parent="." unique_id=427367805]
 
 [node name="HUD" parent="UI" unique_id=648338132 instance=ExtResource("3_42plc")]
+
+[node name="TaskInteractable" parent="." unique_id=1115151098 instance=ExtResource("9_1xy5d")]
+position = Vector2(-164, 455)
+task_duration = 0.0

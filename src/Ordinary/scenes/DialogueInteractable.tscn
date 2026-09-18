@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://d18tdseuxi7lt" path="res://scripts/interactable.gd" id="2_ntrct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_area"]
-radius = 48.0
+radius = 12.529964
 
-[node name="DialogueInteractable" type="Node" unique_id=2063825560]
+[node name="DialogueInteractable" type="Node2D" unique_id=1265805876]
 script = ExtResource("1_dlgui")
 
 [node name="Interactable" type="Node" parent="." unique_id=120042107 node_paths=PackedStringArray("interactable_area")]
