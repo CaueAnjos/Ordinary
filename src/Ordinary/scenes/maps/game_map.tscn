@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://cxvtf5w7d183s"
 z_index = 6
 position = Vector2(152, 409)
 task_id = "Printer"
-task_label = "Imprama documentos"
+task_label = "Imprima documentos"
 is_repetable = false
 task_duration = 10.0
 

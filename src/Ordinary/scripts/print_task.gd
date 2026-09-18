@@ -9,4 +9,4 @@ func _on_started_task() -> void:
 
 func _on_ended_task() -> void:
 	$AudioStreamPlayer.stop()
-	$AnimationPlayer.stop()
+	$AnimationPlayer.play("Printed")
