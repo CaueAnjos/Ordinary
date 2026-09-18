@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dsp5k1yobrxj4"]
 
-[ext_resource type="Texture2D" uid="uid://bdn6frbjasxmn" path="res://assets/battery-level-90-charging-svgrepo-com.svg" id="1_vh6qn"]
 [ext_resource type="Script" uid="uid://cf8vjonh10grq" path="res://scripts/Minigame/fishtank/fish_food.gd" id="2_4r01n"]
+[ext_resource type="Texture2D" uid="uid://osrukos2gl41" path="res://assets/fish_food.png" id="2_vh6qn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4gkr"]
-radius = 6.000001
+radius = 8.062259
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh6qn"]
 radius = 14.035668
@@ -16,8 +16,10 @@ gravity_scale = 0.2
 script = ExtResource("2_4r01n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1661411148]
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("1_vh6qn")
+position = Vector2(1, 1)
+texture = ExtResource("2_vh6qn")
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=327058800]
 rotation = -0.19135197
