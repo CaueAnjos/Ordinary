@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node
 class_name DialogueInteractable
 ## A simple interactable that shows a dialogue balloon when the player interacts with it.
 

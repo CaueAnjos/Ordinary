@@ -2,7 +2,7 @@ extends Control
 
 ## The scene loaded when the Start button is pressed. Change this in the Inspector
 ## to point "Start" at a different scene/level.
-@export var scene_to_load: PackedScene = preload("res://scenes/maps/testmap.tscn")
+@export var scene_to_load: PackedScene = preload("res://scenes/maps/game_map.tscn")
 
 @onready var menu_view: Control = $MenuView
 @onready var credits_view: Control = $CreditsView
